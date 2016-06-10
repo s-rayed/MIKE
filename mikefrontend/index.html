@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+
+
+
+      <div id="enterhere">
+        <p id="info"></p>
+      </div>
+
+    <form name="myform" action="#" method="POST">
+    <div align="center">
+    <br><br>
+    <input id="question" type="text" size="25" value="Enter your question here!">
+    <br><input id="clicky" type="submit" value="Submit"><br>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+  <script>
+    $(function(){
+      $('#clicky').on('click', function(e){
+        e.preventDefault();
+        var question = $('#question').val();
+        $.ajax({
+          url:'http://localhost:3000/',
+          data: {data: 'hello world'},
+          method: 'POST',
+        }).done(function(error, data){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('response', data.docs[0].id)
+            }
+        });
+        // $.get('http://localhost:3000')
+        // .done(function(data2)
+        //   alert(data.message)
+        // })
+      })
+    })
+  </script>
+
+</body>
+</html>
