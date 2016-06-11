@@ -1,6 +1,15 @@
 # MIKE
 To start:
+<br> Mike Frontend API:
 <br>
-1. python -m SimpleHTTPServer
+python -m SimpleHTTPServer
 <br>
-2. localhost:8000
+-server will be running at localhost:8000
+<br>
+To start:
+<br>
+Mike API:
+<br>
+npm --start
+<br>
+-server will be running at localhost:3000
