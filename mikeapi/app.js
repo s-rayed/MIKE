@@ -11,6 +11,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var watson = require('watson-developer-cloud');
 
+var result;
+
 var app = express();
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -62,33 +64,41 @@ app.post('/', function(req, res){
     collection_name: 'example_collection'
   });
 
-  var qs = require('qs');
+  // var qs = require('qs');
 
-  solrClient = retrieve_and_rank.createSolrClient(params);
+  // solrClient = retrieve_and_rank.createSolrClient(params);
 
-  var ranker_id = '3b140ax14-rank-3094';
-  var question = "q=" + question;
+  // var ranker_id = '3b140ax14-rank-3094';
+  // var question = "q=" + question;
 
-  var query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id, body'});
+  // var query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id, body'});
 
-  solrClient.get('fcselect', query, function(err, searchResponse) {
-    if(err) {
-      console.log('Error searching for documents: ' + err);
-    } else {
-      console.log(JSON.stringify(searchResponse.response.docs, null, 2));
-    }
-  });
-
-  // var query = solrClient.createQuery();
-  // query.q({ '*' : '*' });
-  // solrClient.search(query, function(err, searchResponse) {
+  // solrClient.get('fcselect', query, function(err, searchResponse) {
   //   if(err) {
   //     console.log('Error searching for documents: ' + err);
   //   } else {
-  //     console.log('Found ' + searchResponse.response.numFound + ' document(s).');
-  //     console.log('First document: ' + JSON.stringify(searchResponse.response.docs[0], null, 2));
+  //     console.log(JSON.stringify(searchResponse.response.docs, null, 2));
   //   }
   // });
+
+  var query = solrClient.createQuery();
+  // req.body --> this object --> {question: 'input in html form'} coming from the front end 
+  query.q(req.body.question);
+  solrClient.search(query, function(err, searchResponse) {
+    if(err) {
+      console.log('Error searching for documents: ' + err);
+    } else {
+      console.log('Found ' + searchResponse.response.numFound + ' document(s).');
+      result = JSON.stringify(searchResponse.response.docs, null, 2);
+      console.log('All documents: ' + result);
+      // $.post({ 
+      //   url:'http://localhost:8000/',
+      //   data: {data: result},
+      //   method: 'POST',
+      // })
+
+    }
+  });
   
   // $.ajax({
   //   method: 'GET',
@@ -106,7 +116,8 @@ app.post('/', function(req, res){
   //   }
   // }) 
   res.send({
-    message: 'this is our api'
+    message: 'this is our api',
+    data: result
     // first controller
   })
 })
