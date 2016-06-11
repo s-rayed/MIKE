@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var watson = require('watson-developer-cloud');
 
 var app = express();
 app.use(function(req, res, next) {
@@ -18,6 +19,14 @@ app.use(function(req, res, next) {
 });
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// Load jsdom, and create a window.
+var jsdom = require("jsdom").jsdom;
+var doc = jsdom();
+var window = doc.defaultView;
+
+// Load jQuery with the simulated jsdom window.
+$ = require('jquery')(window);
 
 // view engine setup
 
@@ -32,16 +41,64 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get('/', function(req, res){
-  console.log('get request');  
+  console.log('get request');
+
   res.send({
     message: 'this is our api' // first controller
   })
 });
 
-app.post('/test', function(req, res){
+app.post('/', function(req, res){
   console.log('post request', req.body);
+  var retrieve = watson.retrieve_and_rank({
+    username: '63571437-b426-4a21-b046-3c056790b6a5',
+    password: 'ywyQk8T2gQtK',
+    version: 'v1',
+    url: 'https://gateway.watsonplatform.net/retrieve-and-rank/api'
+  });
+
+  var solrClient = retrieve.createSolrClient({
+    cluster_id: 'sc56fcfec9_8f5d_4748_8204_a291227556ed',
+    collection_name: 'example_collection'
+  });
+
+  var qs = require('qs');
+
+  solrClient = retrieve_and_rank.createSolrClient(params);
+
+  var ranker_id = '3b140ax14-rank-3094';
+  var question = "q=" + question;
+
+  var query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id, body'})
+
+  // var query = solrClient.createQuery();
+  // query.q({ '*' : '*' });
+  // solrClient.search(query, function(err, searchResponse) {
+  //   if(err) {
+  //     console.log('Error searching for documents: ' + err);
+  //   } else {
+  //     console.log('Found ' + searchResponse.response.numFound + ' document(s).');
+  //     console.log('First document: ' + JSON.stringify(searchResponse.response.docs[0], null, 2));
+  //   }
+  });
+  // $.ajax({
+  //   method: 'GET',
+  //   url: "https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/sc56fcfec9_8f5d_4748_8204_a291227556ed/solr/example_collection/fcselect?ranker_id=3b140ax14-rank-3094&q=how%20do%20i%20get%20rid%20of%20my&wt=json&fl=id,body",
+  //   dataType: 'json'
+  // }).always(function(data) {
+  //   console.log(JSON.stringify(data));
+  // });
+  // .done(function(error, data){
+  //   console.log('here')
+  //   if (error) {
+  //     console.log(error)
+  //   } else {
+  //     console.log(data)
+  //   }
+  // }) 
   res.send({
-    message: 'this is our api' // first controller
+    message: 'this is our api'
+    // first controller
   })
 });
 

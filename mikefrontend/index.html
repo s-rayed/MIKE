@@ -27,17 +27,19 @@
       $('#clicky').on('click', function(e){
         e.preventDefault();
         var question = $('#question').val();
-        $.ajax({
+        $.post({
           url:'http://localhost:3000/',
-          data: {data: 'hello world'},
+          data: {question: question},
           method: 'POST',
-        }).done(function(error, data){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('response', data.docs[0].id)
-            }
-        });
+        })
+        // .done(function(error, data){
+        //     console.log(error)
+        //     if (error) {
+        //       console.log(error);
+        //     } else {
+        //       console.log('response', data.docs[0].id)
+        //     }
+        // });
         // $.get('http://localhost:3000')
         // .done(function(data2)
         //   alert(data.message)
@@ -48,3 +50,18 @@
 
 </body>
 </html>
+
+
+  <!--   $.ajax({
+      method: 'GET',
+      username: 'xxxxxx',
+      password: 'xxxxxxxx',
+      url: "https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/sc56fcfec9_8f5d_4748_8204_a291227556ed/solr/example_collection/fcselect?ranker_id=3b140ax14-rank-3094&q=how%20do%20i%20get%20rid%20of%20my&wt=json&fl=id,body",
+      datatype: 'json'
+    }).done(function(error, data){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data.docs[0].id)
+        }
+    }); -->
