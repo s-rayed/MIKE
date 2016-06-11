@@ -26,10 +26,10 @@
     $(function(){
       $('#clicky').on('click', function(e){
         e.preventDefault();
-        var question = $('#question').val();
+        var question1 = $('#question').val();
         $.post({
           url:'http://localhost:3000/',
-          data: {question: question},
+          data: {question: question1},
           method: 'POST',
         })
         // .done(function(error, data){

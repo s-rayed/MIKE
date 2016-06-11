@@ -69,7 +69,15 @@ app.post('/', function(req, res){
   var ranker_id = '3b140ax14-rank-3094';
   var question = "q=" + question;
 
-  var query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id, body'})
+  var query = qs.stringify({q: question, ranker_id: ranker_id, fl: 'id, body'});
+
+  solrClient.get('fcselect', query, function(err, searchResponse) {
+    if(err) {
+      console.log('Error searching for documents: ' + err);
+    } else {
+      console.log(JSON.stringify(searchResponse.response.docs, null, 2));
+    }
+  });
 
   // var query = solrClient.createQuery();
   // query.q({ '*' : '*' });
@@ -80,7 +88,8 @@ app.post('/', function(req, res){
   //     console.log('Found ' + searchResponse.response.numFound + ' document(s).');
   //     console.log('First document: ' + JSON.stringify(searchResponse.response.docs[0], null, 2));
   //   }
-  });
+  // });
+  
   // $.ajax({
   //   method: 'GET',
   //   url: "https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/sc56fcfec9_8f5d_4748_8204_a291227556ed/solr/example_collection/fcselect?ranker_id=3b140ax14-rank-3094&q=how%20do%20i%20get%20rid%20of%20my&wt=json&fl=id,body",
@@ -100,7 +109,7 @@ app.post('/', function(req, res){
     message: 'this is our api'
     // first controller
   })
-});
+})
 
 // app.get('/index', function(req, res){
 //   res.render('index');
