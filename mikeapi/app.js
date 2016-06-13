@@ -51,17 +51,19 @@ app.get('/', function(req, res){
   })
 });
 
+
+
 app.post('/', function(req, res){
   console.log('post request', req.body);
   var retrieve = watson.retrieve_and_rank({
-    username: '63571437-b426-4a21-b046-3c056790b6a5',
-    password: 'ywyQk8T2gQtK',
+    username: '74319030-a8c0-43d0-a824-b575fd1c5f9d',
+    password: 'dPwuAXLhJgkp',
     version: 'v1',
     url: 'https://gateway.watsonplatform.net/retrieve-and-rank/api'
   });
 
   var solrClient = retrieve.createSolrClient({
-    cluster_id: 'sc56fcfec9_8f5d_4748_8204_a291227556ed',
+    cluster_id: 'scf7159333_cd15_46a2_a947_dc22097629f0',
     collection_name: 'example_collection'
   });
 
