@@ -10,6 +10,6 @@ To start:
 <br>
 Mike API:
 <br>
-npm --start
+npm start
 <br>
 -server will be running at localhost:3000
