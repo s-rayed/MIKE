@@ -322,7 +322,7 @@ function showButtons(style) {
   </div>
 
   <div>
-    <p id="show"></p>
+    <p id="show">Hello</p>
   </div>
 
   <br><input id="recordButton" type="submit" value="Record"><br>
@@ -333,7 +333,6 @@ function showButtons(style) {
 
   <script>
    'use strict';
-
 
 
     $(function(){
@@ -348,52 +347,18 @@ function showButtons(style) {
           data: {question: question1},
         })
         .done(function(data){
-          const ourData = JSON.parse(data.data);
+          console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+          const ourData = (data.data);
+          console.log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
           console.log(ourData);
-          $('#show').text(ourData[0].bibliography)
+          console.log("-----------------------------------------------------------------------------------------")
+            $('#show').append(ourData[0].bibliography)  
+          })
+          
         })
       
       })
-    });
-      
-
-// //AHHAHAHHAHHAHAHAHHAHAHAHAHAHAHAHEFN:EJNFESFF
-//       var watson = require('watson-developer-cloud');
-      // var fs = require('fs');
-
-//       var speech_to_text = watson.speech_to_text({
-//         username: 'd08ba173-d6cb-499c-8b37-47f13be0664c',
-//         password: 'E3Dz022kxmK0',
-//         version: 'v1'
-//       });
-       
-//       // streaming 
-//       fs.createReadStream('./resources/speech.wav')
-//         .pipe(speech_to_text.createRecognizeStream({ content_type: 'audio/l16; rate=44100' }))
-//         .pipe(fs.createWriteStream('./transcription.txt'));
-
-//     })
-
-
-
 
   </script>
-
-
 </body>
 </html>
-
-
-  <!--   $.ajax({
-      method: 'GET',
-      username: 'xxxxxx',
-      password: 'xxxxxxxx',
-      url: "https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/sc56fcfec9_8f5d_4748_8204_a291227556ed/solr/example_collection/fcselect?ranker_id=3b140ax14-rank-3094&q=how%20do%20i%20get%20rid%20of%20my&wt=json&fl=id,body",
-      datatype: 'json'
-    }).done(function(error, data){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(data.docs[0].id)
-        }
-    }); -->
