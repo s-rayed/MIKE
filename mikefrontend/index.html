@@ -11,7 +11,7 @@
     font-family: Verdana, Arial, sans-serif;
   }
   a:link {
-    color:#000;
+    color:#000; 
     text-decoration: none;
   }
   a:visited {
@@ -407,43 +407,47 @@ function showButtons(style) {
 
 
   <script>
-   
+   'use strict';
 
 
 
     $(function(){
       $('#clicky').on('click', function(e){
         e.preventDefault();
+        
         var question1 = $('#final_span').text();
+        console.log('Question:', question1);
+
         $.post({
           url:'http://localhost:3000/',
           data: {question: question1},
         })
-        .done(function(req, res){
-          console.log(req.body);
-          $('#show').append(req.data)
+        .done(function(data){
+          const ourData = JSON.parse(data.data);
+          console.log(ourData);
+          $('#show').text(ourData[0].bibliography)
         })
       
       })
-
+    });
       
 
-//AHHAHAHHAHHAHAHAHHAHAHAHAHAHAHAHEFN:EJNFESFF
-      var watson = require('watson-developer-cloud');
-      var fs = require('fs');
+// //AHHAHAHHAHHAHAHAHHAHAHAHAHAHAHAHEFN:EJNFESFF
+//       var watson = require('watson-developer-cloud');
+//       var fs = require('fs');
 
-      var speech_to_text = watson.speech_to_text({
-        username: 'd08ba173-d6cb-499c-8b37-47f13be0664c',
-        password: 'E3Dz022kxmK0',
-        version: 'v1'
-      });
+//       var speech_to_text = watson.speech_to_text({
+//         username: 'd08ba173-d6cb-499c-8b37-47f13be0664c',
+//         password: 'E3Dz022kxmK0',
+//         version: 'v1'
+//       });
        
-      // streaming 
-      fs.createReadStream('./resources/speech.wav')
-        .pipe(speech_to_text.createRecognizeStream({ content_type: 'audio/l16; rate=44100' }))
-        .pipe(fs.createWriteStream('./transcription.txt'));
+//       // streaming 
+//       fs.createReadStream('./resources/speech.wav')
+//         .pipe(speech_to_text.createRecognizeStream({ content_type: 'audio/l16; rate=44100' }))
+//         .pipe(fs.createWriteStream('./transcription.txt'));
 
-    })
+//     })
 
 
 
