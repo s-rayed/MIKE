@@ -352,13 +352,13 @@ function showButtons(style) {
           console.log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
           console.log(ourData);
           console.log("-----------------------------------------------------------------------------------------")
-          debugger;
-            $('#show').append(ourData[0].bibliography)  
+          ourData.forEach(function(item, index){
+            $('#show').append(ourData[index].bibliography)
           })
-          
-        })
-      
       })
+      });
+    });
+
 
   </script>
 </body>
