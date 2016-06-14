@@ -348,10 +348,11 @@ function showButtons(style) {
         })
         .done(function(data){
           console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-          const ourData = (data.data);
+          const ourData = data.data;
           console.log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
           console.log(ourData);
           console.log("-----------------------------------------------------------------------------------------")
+          debugger;
             $('#show').append(ourData[0].bibliography)  
           })
           

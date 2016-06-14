@@ -78,7 +78,7 @@ app.post('/', function(req, res){
     
       res.send({
         message: new Date(),
-        data: result[0]
+        data: result
       });
     }
   });
