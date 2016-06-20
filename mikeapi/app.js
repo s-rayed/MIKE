@@ -4,30 +4,25 @@ var path = require('path');
 var cors = require('cors');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
-var users = require('./routes/users');
 var watson = require('watson-developer-cloud');
+
+const chalk = require('chalk');
 
 // Configuration
 var app = express();
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors({
+  origin: '*'
+}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // Load jsdom, and create a window.
-var jsdom = require("jsdom").jsdom;
-var doc = jsdom();
-var window = doc.defaultView;
+// var jsdom = require("jsdom").jsdom;
+// var doc = jsdom();
+// var window = doc.defaultView;
 
 // Load jQuery with the simulated jsdom window.
-$ = require('jquery')(window);
+// $ = require('jquery')(window);
 
 var result;
 
@@ -46,7 +41,10 @@ app.get('/', function(req, res){
 
 // @post '/'
 app.post('/', function(req, res){
-  console.log('post request', req.body);
+
+  console.log(chalk.blue.bold(' ----- POST HEADERS', JSON.stringify(req.headers, null, 4)));
+  console.log(chalk.blue.bold(' ----- POST Request', JSON.stringify(req.body, null, 4)));
+
   var retrieve = watson.retrieve_and_rank({
     username: '74319030-a8c0-43d0-a824-b575fd1c5f9d',
     password: 'dPwuAXLhJgkp',
@@ -55,7 +53,7 @@ app.post('/', function(req, res){
   });
 
   var solrClient = retrieve.createSolrClient({
-    cluster_id: 'scf7159333_cd15_46a2_a947_dc22097629f0',
+    cluster_id: 'scc1707995_16b7_4698_ac1b_026b20f72b70',
     collection_name: 'example_collection'
   });
 
@@ -99,7 +97,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.send({
       message: err.message,
       error: err
     });
@@ -110,7 +108,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.send({
     message: err.message,
     error: {}
   });
