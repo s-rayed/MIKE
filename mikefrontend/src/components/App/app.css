@@ -1,0 +1,26 @@
+html{
+  background: url("http://fullhdpictures.com/wp-content/uploads/2015/10/Galaxy-Backgrounds.jpeg")
+}
+.mike_title {
+  color: orange;
+  font-size: 60px;
+  font-family:  sans-serif;
+  text-align: center;
+
+}
+
+#button{
+  border-radius:50%;
+  height: 300px;
+  width: 300px;
+  margin-bottom: 100px;
+}
+
+#equalizer {
+
+}
+.speechButton{
+  cursor: pointer;
+  
+
+}
