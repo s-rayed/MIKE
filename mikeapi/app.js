@@ -26,9 +26,9 @@ app.use(bodyParser.json());
 
 var result;
 
-//////////////////
-// Controllers //
-////////////////
+///////////////////
+// Controllers ///
+/////////////////
 
 // @get '/'
 app.get('/', function(req, res){
