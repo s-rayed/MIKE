@@ -2,6 +2,7 @@
 node_modules/
 public/
 dist/
+npm-debug.log
 
 ### SublimeText ###
 # cache files for sublime text
