@@ -53,7 +53,7 @@ app.post('/', function(req, res){
   });
 
   var solrClient = retrieve.createSolrClient({
-    cluster_id: 'scc1707995_16b7_4698_ac1b_026b20f72b70',
+    cluster_id: 'sca991bfe7_b6a0_4f86_a8d8_4d2e73c97064',
     collection_name: 'example_collection'
   });
 
