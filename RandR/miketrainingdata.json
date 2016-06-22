@@ -226,127 +226,1525 @@
           "body" : "Reduce method for arrays",
           "title" : "Reduce method"
         }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 22,
+        "author" : "http://eloquentjavascript.net/05_higher_order.html",
+        "bibliography" : "The bind method, which all functions have, creates a new function that will call the original function but with some of the arguments already fixed.
+
+        The following code shows an example of bind in use. It defines a function isInSet that tells us whether a person is in a given set of strings. To call filter in order to collect those person objects whose names are in a specific set, we can either write a function expression that makes a call to isInSet with our set as its first argument or partially apply the isInSet function.
+
+        var theSet = ['Carel Haverbeke', 'Maria van Brussel',
+          'Donald Duck'];
+        function isInSet(set, person) {
+          return set.indexOf(person.name) > -1;
+        }
+
+        console.log(ancestry.filter(function(person) {
+          return isInSet(theSet, person);
+        }));
+        // → [{name: 'Maria van Brussel', …},
+          //    {name: 'Carel Haverbeke', …}]
+        console.log(ancestry.filter(isInSet.bind(null, theSet)));
+        // → … same result
+        The call to bind returns a function that will call isInSet with theSet as first argument, followed by any remaining arguments given to the bound function.
+
+        The first argument, where the example passes null, is used for method calls, similar to the first argument to apply. I’ll describe this in more detail in the next chapter.",
+        "body" : "Binding in Javascript",
+        "title" : "binding"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 23,
+        "author" : "http://eloquentjavascript.net/06_object.html",
+        "bibliography" : "In addition to their set of properties, almost all objects also have a prototype. A prototype is another object that is used as a fallback source of properties. When an object gets a request for a property that it does not have, its prototype will be searched for the property, then the prototype’s prototype, and so on. So who is the prototype of that empty object? It is the great ancestral prototype, the entity behind almost all objects, Object.prototype. As you might expect, the Object.getPrototypeOf function returns the prototype of an object. The prototype relations of JavaScript objects form a tree-shaped structure, and at the root of this structure sits Object.prototype. It provides a few methods that show up in all objects, such as toString, which converts an object to a string representation.",
+        "body" : "Prototype of an object in JavaScript",
+        "title" : "prototype of an object"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 24,
+        "author" : "http://eloquentjavascript.net/06_object.html",
+        "bibliography" : "A more convenient way to create objects that derive from some shared prototype is to use a constructor. In JavaScript, calling a function with the new keyword in front of it causes it to be treated as a constructor. The constructor will have its this variable bound to a fresh object, and unless it explicitly returns another object value, this new object will be returned from the call.
+
+        An object created with new is said to be an instance of its constructor.
+
+        Here is a simple constructor for rabbits. It is a convention to capitalize the names of constructors so that they are easily distinguished from other functions.
+
+        function Rabbit(type) {
+          this.type = type;
+        }
+
+        var killerRabbit = new Rabbit('killer');
+        var blackRabbit = new Rabbit('black');
+        console.log(blackRabbit.type);
+        // → black
+        Constructors (in fact, all functions) automatically get a property named prototype, which by default holds a plain, empty object that derives from Object.prototype.",
+        "body" : "constructors of objects",
+        "title" : "constructors"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 25,
+        "author" : "http://eloquentjavascript.net/06_object.html",
+        "bibliography" : "A prototype can be used at any time to add new properties and methods to all objects based on it. For example, it might become necessary for our rabbits to dance.
+
+        Rabbit.prototype.dance = function() {
+          console.log('The ' + this.type + ' rabbit dances a jig.');
+        };
+        killerRabbit.dance();
+        // → The killer rabbit dances a jig.
+        That’s convenient. But there are situations where it causes problems. In previous chapters, we used an object as a way to associate values with names by creating properties for the names and giving them the corresponding value as their value.",
+        "body" : "prototype interference in objects",
+        "title" : "prototype interference"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 26,
+        "author" : "http://eloquentjavascript.net/03_functions.html",
+        "bibliography" : "The ability to treat functions as values, combined with the fact that local variables are 're-created' every time a function is called, brings up an interesting question. What happens to local variables when the function call that created them is no longer active?",
+        "body" : "Closure in Javascript",
+        "title" : "Closure"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 27,
+        "author" : "http://eloquentjavascript.net/09_regexp.html",
+        "bibliography" : "A regular expression is a type of object. It can either be constructed with the RegExp constructor or written as a literal value by enclosing the pattern in forward slash (/) characters. When using the RegExp constructor, the pattern is written as a normal string, so the usual rules apply for backslashes. The second notation, where the pattern appears between slash characters, treats backslashes somewhat differently. First, since a forward slash ends the pattern, we need to put a backslash before any forward slash that we want to be part of the pattern. In addition, backslashes that aren’t part of special character codes (like \n) will be preserved, rather than ignored as they are in strings, and change the meaning of the pattern. Some characters, such as question marks and plus signs, have special meanings in regular expressions and must be preceded by a backslash if they are meant to represent the character itself.",
+        "body" : "Regular Expression",
+        "title" : "Regex"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 28,
+        "author" : "http://eloquentjavascript.net/10_modules.html",
+        "bibliography" : "When looking at a larger program in its entirety, individual functions start to blend into the background. Such a program can be made more readable if we have a larger unit of organization. Modules divide programs into clusters of code that, by some criterion, belong together. This chapter explores some of the benefits that such division provides and shows techniques for building modules in JavaScript.",
+        "body" : "Modules in Javascript",
+        "title" : "Modules"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 29,
+        "author" : "http://eloquentjavascript.net/10_modules.html",
+        "bibliography" : "Most modern programming languages have a scope level between global (everyone can see it) and local (only this function can see it). JavaScript does not. Thus, by default, everything that needs to be visible outside of the scope of a top-level function is visible everywhere. Namespace pollution, the problem of a lot of unrelated code having to share a single set of global variable names, was mentioned in Chapter 4, where the Math object was given as an example of an object that acts like a module by grouping math-related functionality.",
+        "body" : "Namespacing in Javascript",
+        "title" : "Namespacing"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 30,
+        "author" : "http://eloquentjavascript.net/12_browser.html",
+        "bibliography" : "The World Wide Web (not to be confused with the Internet as a whole) is a set of protocols and formats that allow us to visit web pages in a browser. The 'Web' part in the name refers to the fact that such pages can easily link to each other, thus connecting into a huge mesh that users can move through. To add content to the Web, all you need to do is connect a machine to the Internet, and have it listen on port 80, using the Hypertext Transfer Protocol (HTTP). This protocol allows other computers to request documents over the network.",
+        "body" : "World Wide Web",
+        "title" : "WWW"
+      }
+    },
+    "add" : {
+      "doc" : {
+        "id" : 31,
+        "author" : "http://eloquentjavascript.net/13_dom.html",
+        "bibliography" : "The Document Object Model (DOM) is a programming API for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. In the DOM specification, the term 'document' is used in the broad sense - increasingly, XML is being used as a way of representing many different kinds of information that may be stored in diverse systems, and much of this would traditionally be seen as data rather than as documents. Nevertheless, XML presents this data as documents, and the DOM may be used to manage this data. With the Document Object Model, programmers can create and build documents, navigate their structure, and add, modify, or delete elements and content. Anything found in an HTML or XML document can be accessed, changed, deleted, or added using the Document Object Model, with a few exceptions - in particular, the DOM interfaces for the internal subset and external subset have not yet been specified.",
+          "body" : "Document Object Model",
+          "title" : "DOM"
+        }
       },
       "add" : {
         "doc" : {
-          "id" : 22,
+          "id" : 32,
+          "author" : "http://eloquentjavascript.net/13_dom.html",
+          "bibliography" : "Some element attributes, such as href for links, can be accessed through a property of the same name on the element’s DOM object. This is the case for a limited set of commonly used standard attributes. But HTML allows you to set any attribute you want on nodes. This can be useful because it allows you to store extra information in a document. If you make up your own attribute names, though, such attributes will not be present as a property on the element’s node.",
+          "body" : "Element Attributes",
+          "title" : "Attributes"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 33,
+          "author" : "http://eloquentjavascript.net/14_event.html",
+          "bibliography" : "A program can then periodically check the queue for new events and react to what it finds there. Of course, it has to remember to look at the queue, and to do it often, because any time between the key being pressed and the program noticing the event will cause the software to feel unresponsive. This approach is called polling. Most programmers avoid it whenever possible. A better mechanism is for the underlying system to give our code a chance to react to events as they occur. Browsers do this by allowing us to register functions as handlers for specific events.",
+          "body" : "Event handlers",
+          "title" : "Handlers"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 34,
+          "author" : "http://eloquentjavascript.net/14_event.html",
+          "bibliography" : "Each browser event handler is registered in a context. When you call addEventListener as shown previously, you are calling it as a method on the whole window because in the browser the global scope is equivalent to the window object. Every DOM element has its own addEventListener method, which allows you to listen specifically on that element. 
+          <button>Click me</button>
+          <p>No handler here.</p>
+          <script>
+          var button = document.querySelector('button');
+          button.addEventListener('click', function() {
+            console.log('Button clicked');
+          });
+          The example attaches a handler to the button node. Thus, clicks on the button cause that handler to run, whereas clicks on the rest of the document do not. Giving a node an onclick attribute has a similar effect.",
+          "body" : "Events and dom nodes",
+          "title" : "Events and dom nodes"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 35,
+          "author" : "http://eloquentjavascript.net/14_event.html",
+          "bibliography" : "Event handlers registered on nodes with children will also receive some events that happen in the children. If a button inside a paragraph is clicked, event handlers on the paragraph will also receive the click event. But if both the paragraph and the button have a handler, the more specific handler—the one on the button—gets to go first. The event is said to propagate outward, from the node where it happened to that node’s parent node and on to the root of the document. Finally, after all handlers registered on a specific node have had their turn, handlers registered on the whole window get a chance to respond to the event.",
+          "body" : "Propogation and Event handlers",
+          "title" : "Propogation"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 36,
+          "author" : "http://eloquentjavascript.net/17_http.html",
+          "bibliography" : "The Hypertext Transfer Protocol, is the mechanism through which data is requested and provided on the World Wide Web. This chapter describes the protocol in more detail and explains the way browser JavaScript has access to it. If you type eloquentjavascript.net/17_http.html into your browser’s address bar, the browser first looks up the address of the server associated with eloquentjavascript.net and tries to open a TCP connection to it on port 80, the default port for HTTP traffic.",
+          "body" : "Hypertext Transfer Protocol",
+          "title" : "HTTP"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 37,
+          "author" : "http://eloquentjavascript.net/17_http.html",
+          "bibliography" : "A request has finished when the call to send returns. This is convenient because it means properties such as responseText are available immediately. But it also means that our program is suspended as long as the browser and server are communicating. When the connection is bad, the server is slow, or the file is big, that might take quite a while. Worse, because no event handlers can fire while our program is suspended, the whole document will become unresponsive. If we pass true as the third argument to open, the request is asynchronous. This means that when we call send, the only thing that happens right away is that the request is scheduled to be sent. Our program can continue, and the browser will take care of the sending and receiving of data in the background. But as long as the request is running, we won’t be able to access the response. We need a mechanism that will notify us when the data is available.",
+          "body" : "Asynchronous Requests",
+          "title" : "Asynchronous Requests"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 38,
+          "author" : "http://eloquentjavascript.net/04_data.html",
+          "bibliography" : "For complicated projects, writing asynchronous code in plain callback style is hard to do correctly. It is easy to forget to check for an error or to allow an unexpected exception to cut the program short in a crude way. Additionally, arranging for correct error handling when the error has to flow through multiple callback functions and catch blocks is tedious. There have been a lot of attempts to solve this with extra abstractions. One of the more successful ones is called promises. Promises wrap an asynchronous action in an object, which can be passed around and told to do certain things when the action finishes or fails. This interface is set to become part of the next version of the JavaScript language but can already be used as a library. The interface for promises isn’t entirely intuitive, but it is powerful.",
+          "body" : "Promises in Javascript",
+          "title" : "Promise"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 39,
           "author" : "http://eloquentjavascript.net/05_higher_order.html",
-          "bibliography" : "The bind method, which all functions have, creates a new function that will call the original function but with some of the arguments already fixed.
+          "bibliography" : "JavaScript lends itself well to a system like Node. It is one of the few programming languages that does not have a built-in way to do I/O. Thus, JavaScript could be fit onto Node’s rather eccentric approach to I/O without ending up with two inconsistent interfaces. In 2009, when Node was being designed, people were already doing callback-based I/O in the browser, so the community around the language was used to an asynchronous programming style.",
+          "body" : "Node.js is an open-source, cross-platform runtime environment for developing server-side Web applications.",
+          "title" : "Node js"
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 40,
+          "author" : "Google",
+          "bibliography" : "The name is a reference to a story in the book The Pragmatic Programmer in which a programmer would carry around a rubber duck and debug their code by forcing themselves to explain it, line-by-line, to the duck. Many other terms exist for this technique, often involving different inanimate objects. Many programmers have had the experience of explaining a programming problem to someone else, possibly even to someone who knows nothing about programming, and then hitting upon the solution in the process of explaining the problem. In describing what the code is supposed to do and observing what it actually does, any incongruity between these two becomes apparent. More generally, teaching a subject forces its evaluation from different perspectives and can provide a deeper understanding. By using an inanimate object, the programmer can try to accomplish this without having to interrupt anyone else.",
+          "body" : "Rubber duck debugging is an informal term used in software engineering for a method of debugging code.",
+          "title" : "Rubber duck debugging"
+        }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 41,
+         "author" : "http://slav0nic.org.ua/static/books/ruby/Pragmatic%20programmers%20-%20programming%20ruby,%202nd%20ed%20-%202005%20-%20(by%20laxxuss).pdf",
+         "bibliography" : "Ruby is a genuine object-oriented language. Everything you manipulate
+         is an object, and the results of those manipulations are themselves objects. However,
+         many languages make the same claim, and their users often have a different interpretation
+         of what object-oriented means and a different terminology for the concepts
+         they employ.",
+         "body" : "OOP",
+         "title" : "Object Oriented Programming"
+       }
+      },
+      "add" : {
+       "doc" : {
+        "id" : 42,
+        "author" : "http://slav0nic.org.ua/static/books/ruby/Pragmatic%20programmers%20-%20programming%20ruby,%202nd%20ed%20-%202005%20-%20(by%20laxxuss).pdf",
+        "bibliography" : "Comments are how programmers annotate their code. The comments themselves are ignored while a program runs.
+        To comment out a line of code, use the pound sign #.Everything after the pound sign – on the same line – will be ignored by the program.",
+        "body" : "Comments",
+        "title" : "Comments"
+      }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 43,
+         "author" : "http://ruby.bastardsbook.com/chapters/conventions/",
+         "bibliography" : "When you want to comment out more than a few lines, it is tedious to put the pound sign in front of all of them. You can comment an entire group of lines at once by using =begin at the start of the comment block and =end at the...end.",
+         "body" : "Comments",
+         "title" : "Multi-line Comments"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 44,
+         "author" : "http://ruby.bastardsbook.com/chapters/conventions/",
+         "bibliography" : "It includes the carriage returns made when you hit Enter, as well as space and tab characters.
+      For the most part, whitespace in the code doesn't matter to the Ruby interpreter",
+         "body" : "WS",
+         "title" : "Whitespace"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 45,
+         "author" : "http://ruby.bastardsbook.com/chapters/conventions/",
+         "bibliography" : "Just as it's used in a traditional essay's outline, indentation is used by programmers to indicate nested elements and subroutines. In Ruby, the interpreter pays no mind to it. It's purely for human readability.",
+         "body" : "Indentation",
+         "title" : "Indentation"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 46,
+         "author" : "http://ruby.bastardsbook.com/chapters/conventions/",
+         "bibliography" : "Just as Ruby gives programmers leeway with whitespace, the language allows for different ways to write the same expression. This is sometimes referred to as syntactic sugar. You'll appreciate it as you get better, but it can definitely lead to confusion early on.",
+         "body" : "SS",
+         "title" : "Syntactic sugar"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 47,
+         "author" : "http://ruby.bastardsbook.com/chapters/numbers/",
+         "bibliography" : "There are two types of numbers that you'll deal with regularly: Fixnum You probably know this as an integer. A whole number with no decimal point, e.g. 42 Float This is basically a decimal number, e.g: 42.923812",
+         "body" : "Num",
+         "title" : "Numbers"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 48,
+         "author" : "http://ruby.bastardsbook.com/chapters/numbers/",
+         "bibliography" : "Ruby includes all the basic math operators: + addition - subtraction * multiplication / division ** (to the) power % modulo",
+         "body" : "operators",
+         "title" : "Operators"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 49,
+         "author" : "http://ruby.bastardsbook.com/chapters/numbers/",
+         "bibliography" : "he modulo operator is probably the one most unfamiliar to non-programmers. It finds the remainder of a when divided by b",
+         "body" : "modulo",
+         "title" : "modulo"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 50,
+         "author" : "http://ruby.bastardsbook.com/chapters/numbers/",
+         "bibliography" : "If you want to convert a number to another type of number, Ruby provides two methods: to_i and to_f, which converts a number to an integer and float, respectively",
+         "body" : "Num Con",
+         "title" : "Number Conversion"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 51,
+         "author" : "",
+         "bibliography" : "It's more important that you get used to the idea that objects in Ruby each have a class with specific properties and methods. The next chapter deals with the String – the class that can hold non-number characters – and you'll see that the String class doesn't mix easy with the number classes.",
+         "body" : "more nums",
+         "title" : "More numbers"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 52,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "For text, whether it be a single letter or a book, Ruby has the String class. This is an entirely different data object that won't mix with the data objects for numbers.",
+         "body" : "strings",
+         "title" : "Strings"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 53,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "One of the most common show-stopping and confusing mistakes you'll make as a novice is not wrapping your strings in matching quotes. This is a very common typo to make early on. If you start a string with a single quote, you must end it with a single quote.",
+         "body" : "quote",
+         "title" : "Quotes"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 54,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "Students will sometimes miss the closing quote mark when copying code for practice. They then will complain their program doesn't do anything when they hit the Enter key. Without that closing quote, Ruby will interpret that Enter (carriage return/line break) character as just another part of the string, instead of an actual command.",
+         "body" : "closing quotes",
+         "title" : "Closing Quotes"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 55,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "You can add strings together – this is sometimes referred to as concatenation. You can't subtract or multiply strings together",
+         "body" : "concat",
+         "title" : "String concatenation"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 56,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "There are times when you'll take in input from an outside source – such as scraping from a webpage or taking in user input – and then need to combine it with existing data. You can to convert it to a common datatype in order to avoid errors. Ruby gives us several methods to convert data We used to_i in the previous chapter to turn a Float into an integer. You can guess what to_s stands for. You'll have to decide what's the appropriate conversion, or rather, if you should be converting anything at all.",
+         "body" : "SC",
+         "title" : "String conversion"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 57,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "In the context of a String, the backslash character tells Ruby that the character immediately following it is special. The backslash is frequently referred to as the escape character because it...escapes (I guess?) a character from being interpreted as normal.",
+         "body" : "BS",
+         "title" : "Backslash"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 58,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "Inside a string, the character n is just a literal n. However, prepending a backslash like so tells Ruby to insert a newline character there",
+         "body" : "NLC",
+         "title" : "New Line character"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 59,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "As with string interpolation, Ruby will only interpret most of the above uses of backslashes inside strings with double quotes",
+         "body" : "DQ",
+         "title" : "Double Quotes"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :60,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "One of the most common String operations is replacing certain characters with others. The method for that is called sub, short for substitution. Unlike the few methods we've learned so far, sub takes in two arguments.",
+         "body" : "SS",
+         "title" : "String substitution"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :61,
+         "author" : "http://ruby.bastardsbook.com/chapters/strings/",
+         "bibliography" : "Remember these replacement methods for later, because we'll use them more after we've formally covered methods. After you learn about regular expressions, you'll find yourself using them rather than strings with gsub. I don't consider regular expressions a programming fundamental because you don't have to be a programmer to use them. But they're so important to any one who works with text (e.g. you, the reader) that I've written a separate chapter for them (skipping to it now isn't such a bad idea).",
+         "body" : "REGEX",
+         "title" : "Regular expressions"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :62,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "In Ruby, variables are sometimes referred to as pointers and references; they point to objects. They are references to objects. The most important impact from variables for our programming is that we can use them to store values for later.",
+         "body" : "variables",
+         "title" : "Variables"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :63,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "By typing the word dog and then setting it equal to the value cat, we have told the Ruby interpreter that any use of dog is a reference to the data stored in that memory location (which Ruby allocates for you). And right now, that piece of memory holds the cat string In data-gathering programs, you will use variables to refer to quantities that you won't know the exact value until the program actually runs. In fact, if you had known what those quantities were, you probably wouldn't write a program in the first place.",
+         "body" : "variables",
+         "title" : "Setting variables"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :64,
+         "author" : "",
+         "bibliography" : "Body of  info",
+         "body" : "acronym",
+         "title" : "Title"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :65,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "If variables in your code are meant to be human-readable labels for your data, then make them readable and sensical to you. Avoid using single- or double-letter variables until you become more experienced (i.e. when you start using loops with temporary variables)",
+         "body" : "variables",
+         "title" : "Naming variables"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :66,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "How can you tell if a given variable refers to data or to a method? Usually, through habit and convention. Most methods are invoked with the dot operator. And those that aren't are common enough that you'll soon recognize them, such as puts.",
+         "body" : "variables",
+         "title" : "Differnce between a variable and a method"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :67,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "Ruby has a special convention for variables that, during the course of a program, will not change in value. These are called, as expected, constants.",
+         "body" : "constants",
+         "title" : "Constants"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :68,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "Using uppercase letters for variables is mostly for human-readibility. Anyone reading your code will expect that constants aren't going to change anywhere in the program, and anyone updating your code should know not to change the value of constants after their initialization",
+         "body" : "constants",
+         "title" : "Setting constants"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" :69,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "In other languages, variables are explicitly declared. For example, in Javascript, the keyword var tells the interpreter that the following word is a new variable. Ruby saves you the trouble of typing var. The upshot is that anytime you bring a new variable into existence, you have to assign it a value, even if the value is nil, which is Ruby's keyword for nothing",
+         "body" : "assignment",
+         "title" : "Variable assignment"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 70,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "To make things a little more concise, Ruby allows you to combine arithmetic operators with the equals sign = to do an operation upon a variable and reassign it to the variable – all in a single line",
+         "body" : "assignment",
+         "title" : "Inline assignment"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 71,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "To use the coat-check metaphor again, if two people check in the exact same coat, we can think of the coats as being equivalent to each other. But they are two physically different objects. This is the same in Ruby: two objects that have equivalent value can yet be two different objects in physical space (i.e. computer memory).",
+         "body" : "objects",
+         "title" : "Object identity"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 72,
+         "author" : "http://ruby.bastardsbook.com/chapters/variables/",
+         "bibliography" : "The most direct way is to use the object_id method, which returns the unique id that the Ruby interpreter gives to every object in memory",
+         "body" : "object",
+         "title" : "Objects in memory"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 73,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "Printing a string to the screen seems easy because the puts method hides all the necessary code from you. But the underlying details are complicated. Take a look at the source code behind puts",
+         "body" : "puts",
+         "title" : "How does puts work"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 74,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "This keyword tells the Ruby interpreter that we're defining a method. The next word is the name of the method.",
+         "body" : "def",
+         "title" : "Def"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 75,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "The terms inside the parentheses are arguments, which stand for the values we want to pass into the method. Multiple arguments are separated with commas.",
+         "body" : "arguments",
+         "title" : "Arguments"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 76,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "This is another String method that is capitalizes a string. Yes, this means that methods can be used within other methods.",
+         "body" : "upcase",
+         "title" : "Upcase"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 77,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "This Ruby keyword indicates what object this method returns, if anything",
+         "body" : "return",
+         "title" : "Return"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 78,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "This marks the end of the method definition.",
+         "body" : "end",
+         "title" : "End"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 79,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "What happens if you call return before the final line of a method? The Ruby interpreter will exit out of the method before it gets to that final line. We'll learn about non-linear scripts in upcoming if/else conditional branches chapter.",
+         "body" : "return",
+         "title" : "Premature return"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 80,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "In software engineering, don't repeat yourself (DRY) is a principle of software development, aimed at reducing repetition of information of all kinds, especially useful in multi-tier architectures. The DRY principle is stated as 'Every piece of knowledge must have a single, unambiguous, authoritative representation within a system'. They apply it quite broadly to include 'database schemas, test plans, the build system, even documentation.' When the DRY principle is applied successfully, a modification of any single element of a system does not require a change in other logically unrelated elements. Additionally, elements that are logically related all change predictably and uniformly, and are thus kept in sync. Besides using methods and subroutines in their code, Thomas and Hunt rely on code generators, automatic build systems, and scripting languages to observe the DRY principle across layers.",
+         "body" : "DRY is simply the acronym for Don't repeat yourself.",
+         "title" : "DRY"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 81,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "DRYing your code involves (at least) these two concepts: abstraction and modularity. Let's see how these concepts are implemented in a real program.",
+         "body" : "dry",
+         "title" : "How to use DRY"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 82,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "When calling a method in other languages, you have to use parentheses to tell the interpreter: the enclosed values here are the arguments I want to pass in. This is optional in Ruby",
+         "body" : "parentheses",
+         "title" : "Optional parentheses"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 83,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "You can call methods one after another by using the dot operator on each method's return value",
+         "body" : "chaining",
+         "title" : "Method chaining"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 84,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "The last line in a method is its return value. No need to write return explicitly, unless there are several places where your method can exit out before the last line",
+         "body" : "return",
+         "title" : "Optional return"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 85,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "Also, parentheses are not just for readability, but they determine order of operations, just as they would in a simple mathematical expression",
+         "body" : "parentheses",
+         "title" : "Order of operations"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 86,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "You must call a method with the same number of arguments as defined in its method definition",
+         "body" : "arguments",
+         "title" : "Optional arguments"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 87,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "The require keyword is how we tell the Ruby interpreter to include the OpenURI module in the environment. This module provides the specific functionality to let open fetch webpages. Without require 'open-uri', the open method would only be able to open files on the hard drive.",
+         "body" : "require",
+         "title" : "Require"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 88,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "The open-uri module condenses the decent-sized chunk of code to download a webpage into the open method. One particular useful feature of open is how it automatically follows redirects. That is, if you use open to open a link that redirects elsewhere, it will automatically go to the new destination.",
+         "body" : "open-uri",
+         "title" : "Open-uri"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 89,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods/",
+         "bibliography" : "Not only can you add methods to class definitions easily, you can alter existing methods. This is generally not advisable.",
+         "body" : "methods",
+         "title" : "Method alteration"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 90,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "RubyGems is a handy system that Ruby developers use to distribute code to each other. To install the Ruby on Rails framework, for example, we simply go to the command line and type: gem install rails",
+         "body" : "gems",
+         "title" : "Installing rails"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 91,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "Go to your command prompt and type in: gem -v You should get a version number, something like: 1.5.1 If that didn't work, see if the manual will help. Otherwise, we're ready to install some gems.",
+         "body" : "gems",
+         "title" : "Installing gems"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 92,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "rest-client provides a variety of methods to simplify the sending and retrieval of data such as webpages. The simplest method is get, which for our basic purposes, does about the same thing that the open method provided by open-uri",
+         "body" : "rest client",
+         "title" : "REST client"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 93,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "The keyword require is how we bring in code libraries for our program to use. To access installed gems, we first require rubygems",
+         "body" : "gems",
+         "title" : "Requiring gems"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 94,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "API stands for Application Programming Interface, a fancy term for the formalized rules your program has to follow if it wants to communicate with another program. In this case, the other program is Google's mapping service.",
+         "body" : "API",
+         "title" : "API"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 95,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "The if statement is how we create a branch in our program flow. The if statement includes a true-or-false expression If that expression evaluates to true, then the Ruby interpreter will execute the puts statement that follows the if statement.",
+         "body" : "if",
+         "title" : "If"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 96,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "Two consecutive equals signs is the operator for an equality test. When the value on the left of == is equal to the right-side value, then the result is true.",
+         "body" : "double equal",
+         "title" : "Double equal"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 97,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "The words true and false have special meaning in programming languages. In Ruby, they have the datatypes of TrueClass and FalseClass, respectively. The specific class names aren't important to remember. The main point is that true and false – note the lack of String-denoting quotes – are the answers to comparison tests.",
+         "body" : "true and false",
+         "title" : "True and false"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 98,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "A common mistake is to use a single equals sign = when a double equals sign == is called for. Remember that the single = assigns a value to a variable. The double == is used to test for equality.",
+         "body" : "double equal",
+         "title" : "== vs ="
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 99,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "Virtually every value – besides false and nil – evaluates as true by an if statement. ",
+         "body" : "true",
+         "title" : "Truthy values"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 100,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "not equal to",
+         "body" : "!",
+         "title" : "What does != mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 101,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "greater than",
+         "body" : "gt",
+         "title" : "What does > mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 102,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "less than",
+         "body" : "lt",
+         "title" : "What does < mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 103,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "greater than or equal to",
+         "body" : "",
+         "title" : "What does >= mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 104,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "less than or equal to",
+         "body" : "",
+         "title" : "What does <= mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 105,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "OR",
+         "body" : "or",
+         "title" : "What does || mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 106,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "AND",
+         "body" : "and",
+         "title" : "What does && mean"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 107,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "In Ruby, the object nil is Ruby's representation of nothing. Yes, it has a class (NilClass) and several methods common to all objects. But its main purpose is to indicate nothingness.",
+         "body" : "Nil",
+         "title" : "Nil"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 108,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "Nothingness is not the same as 0, nor an empty string like ''. It is just nothing. In other languages, it's called referred to as null.",
+         "body" : "0",
+         "title" : "Zero"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 109,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "This indicates an alternative to the preceding if – and any other preceding elsif statements. So, you start off with the if, have any number of elsif alternatives, and end with an else to capture all the leftover possibilities. In other languages, elsif is spelled out as: else if",
+         "body" : "elsif",
+         "title" : "Elsif"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 110,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "This is a Ruby method that can be called by any object. It returns true if the object belongs to the same Class as the Class you pass as an argument intois_a?. The question mark here is just part of the method name, as if it were a regular alphanumeric character.",
+         "body" : "is_a",
+         "title" : "is_a?"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 111,
+         "author" : "http://ruby.bastardsbook.com/chapters/methods-and-gems/",
+         "bibliography" : "Using a for loop, we can repeat a command as many times as we want. We can also vary its output depending on how many times it has run",
+         "body" : "For",
+         "title" : "For loop"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 112,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "This is a special Ruby keyword that is primarily used in for loops. I can't recall when I've ever used it elsewhere.",
+         "body" : "In",
+         "title" : "In"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 113,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "This is a Ruby class called a Range. It consists of a low and a high number separated by two dots. Basically, it is the set of integers from a to b, sequentially.In this case, a is 1 and b is 100. So, you can read this entire line as: for every number in 1 to 100, run the following code block.",
+         "body" : "1..100",
+         "title" : "1..100"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 114,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "This indicates the beginning of the block of code to be repeatedly executed. In a for loop, the do is optional. But I introduce it here as do is used throughout Ruby to start off a block.",
+         "body" : "do",
+         "title" : "do"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 115,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "Ruby has some methods belonging to the FixNum class that you can use to start a loop, including times, upto, and downto.",
+         "body" : "FixNum loops",
+         "title" : "FixNum loops"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 116,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "Besides for, the most commonly seen loop keyword throughout programming languages is while. This executes a code block while a given condition evaluates to true.",
+         "body" : "while",
+         "title" : "While"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 117,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "in Ruby, the preferred way of doing a for-type of loop is to instead use the each method.",
+         "body" : "each",
+         "title" : "Each"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 118,
+         "author" : "http://ruby.bastardsbook.com/chapters/loops/",
+         "bibliography" : "think of them as anonymous methods. They are snippets of codes that, when provided arguments, will do something with those arguments. But, in the name of brevity, these particular methods aren't worth naming.",
+         "body" : "blocks",
+         "title" : "Blocks"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 119,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "The Array is a data object that stores an ordered list of values. In fact, arrays are referred to as lists in other programming languages, including Python.",
+         "body" : "arrays",
+         "title" : "Arrays"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 120,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "You can fill an array with any kind of data object",
+         "body" : "arrays",
+         "title" : "Array contents"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 121,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "Just as with push, pop operates at the end of the array. In computer science lingo, this is referred to as LIFO – Last In, First Out",
+         "body" : "Pop",
+         "title" : "Pop"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 122,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "As you insert elements into an Array, they will remain in the order in which they were added. You can call the sort or sort_by methods, both of which return a sorted copy of that an array.",
+         "body" : "Sort",
+         "title" : "Sort"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 123,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "There are also methods to convert other objects into arrays. One we'll use frequently is split from the String class, which turns a string into an array of elements, separated by a delimiter string you specify.",
+         "body" : "split",
+         "title" : "Split"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 124,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "To use just part of an Array, you can use its slice method. The first argument to slice is the index of the original array that you want to start the sub-array at. The second argument is the number of elements to include, starting from and including the element at the specified index (i.e. a second argument of 0 will return an empty array)",
+         "body" : "slice",
+         "title" : "Slice"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 125,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "What happens when you use a negative integer as an index? Ruby will count from the end of the array. This is extremely useful for getting the last element in a given array without having to know its length.",
+         "body" : "index",
+         "title" : "Negative idices"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 126,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "Think of the Hash object as an Array that can use any data object as a key (the Hash version of an index). In Python, this is referred to as a Dictionary.",
+         "body" : "Hash",
+         "title" : "Hash"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 127,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "A hash uses curly brackets { } around its elements. The notation is a little more complicated than it is for an Array. To associate a key with a value, use the => (referred to as a hash rocket (however, in Ruby 1.9+, the hash rocket can be replaced with a simple colon :).",
+         "body" : "Hash",
+         "title" : "Hash anatomy"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 128,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "Anything you use a Hash for, you can generally do through an equivalent Array. But a Hash can be easier to maintain and manipulate. Because when it comes to addresses – and indices – humans remember words better than they do numbers.",
+         "body" : "Hash vs Array",
+         "title" : "Hash vs Array"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 129,
+         "author" : "http://ruby.bastardsbook.com/chapters/collections/",
+         "bibliography" : "The each method works for a Hash. However, it converts each key-value pair into an array like so: [key, value]",
+         "body" : "Each on hash",
+         "title" : "Each method on a hash"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 130,
+         "author" : "http://ruby.bastardsbook.com/chapters/enumerables/",
+         "bibliography" : "Like each (in fact, map, and all the other Enumerable iterating methods are based off of each), map is invoked by a collection and accepts a block of code that acts upon each element in that collection. The main difference is that map returns that transformed collection",
+         "body" : "map",
+         "title" : "Map"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 131,
+         "author" : "http://ruby.bastardsbook.com/chapters/enumerables/",
+         "bibliography" : "The inject method takes a collection and reduces it to a single value, such as a sum of values",
+         "body" : "inject",
+         "title" : "Inject"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 132,
+         "author" : "http://ruby.bastardsbook.com/chapters/enumerables/",
+         "bibliography" : "The inject's block has two arguments. The first is the variable for the return value after each iteration. Initially, total is equal to the starting value, 0. After each iteration, total is equal to the return value at the end of the block.",
+         "body" : "total",
+         "title" : "Total"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 133,
+         "author" : "http://ruby.bastardsbook.com/chapters/enumerables/",
+         "bibliography" : "Computer software includes computer programs, libraries and related non-executable data, such as online documentation or digital media. Computer hardware and software require each other and neither can be realistically used on its own.
+          At the lowest level, executable code consists of machine language instructions specific to an individual processor—typically a central processing unit (CPU). A machine language consists of groups of binary values signifying processor instructions that change the state of the computer from its preceding state. For example, an instruction may change the value stored in a particular storage location in the computer—an effect that is not directly observable to the user. An instruction may also (indirectly) cause something to appear on a display of the computer system—a state change which should be visible to the user. The processor carries out the instructions in the order they are provided, unless it is instructed to 'jump' to a different instruction, or interrupted.",
+         "body" : "Computer software, or simply software, is that part of a computer system that consists of encoded information or computer instructions, in contrast to the physical hardware from which the system is built. The term is roughly synonymous with computer program.",
+         "title" : "Software"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 134,
+         "author" : "http://ruby.bastardsbook.com/chapters/enumerables/",
+         "bibliography" : "Reading a file uses the same File.open method as before. However, the second argument is an r instead of w.",
+         "body" : "File.open",
+         "title" : "File.open"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 135,
+         "author" : "http://ruby.bastardsbook.com/chapters/enumerables/",
+         "bibliography" : "When dealing with delimited files, such as comma-delimited text files, it's more convenient to read the file line by line. The readlines method can draw in all the content and automatically parse it as an array, splitting the file contents by the line breaks.",
+         "body" : "readlines",
+         "title" : "readlines"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 136,
+         "author" : "http://ruby.bastardsbook.com/chapters/regexes/",
+         "bibliography" : "The caret stands for the start of the line. It indicates that we are interested in a pattern from the very beginning of a given line. This is also referred to as an anchor.",
+         "body" : "^",
+         "title" : "^"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 137,
+         "author" : "http://ruby.bastardsbook.com/chapters/regexes/",
+         "bibliography" : "The s stands for any whitespace character. The asterisks * indicates that we are looking for 0 or more of these whitespaces. So the regex will work if there are no whitespaces or many whitespaces from the beginning of the line.",
+         "body" : "s",
+         "title" : "s"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 138,
+         "author" : "http://ruby.bastardsbook.com/chapters/regexes/",
+         "bibliography" : "Square brackets are a special character in regexes. But we don't want that special meaning. We just want a literal square bracket, so we escape it using a backslash ",
+         "body" : "[",
+         "title" : "["
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 139,
+         "author" : "http://ruby.bastardsbook.com/chapters/regexes/",
+         "bibliography" : "The d represents any numerical digit. Thus, when followed by the greedy operator +, the d+ matches one or more numerical digits.",
+         "body" : "d",
+         "title" : "d"
+       }
+      },
+      "add" : {
+       "doc" : {
+         "id" : 140,
+         "author" : "https://en.wikipedia.org/wiki/IP_address",
+         "bibliography" : "An IP address serves two principal functions: host or network interface identification and location addressing. Its role has been characterized as follows: 'A name indicates what we seek. An address indicates where it is. A route indicates how to get there'. The designers of the Internet Protocol defined an IP address as a 32-bit number and this system, known as Internet Protocol Version 4 (IPv4), is still in use today. However, because of the growth of the Internet and the predicted depletion of available addresses, a new version of IP (IPv6), using 128 bits for the address, was developed in 1995. IPv6 was standardized as RFC 2460 in 1998, and its deployment has been ongoing since the mid-2000s. IP addresses are usually written and displayed in human-readable notations, such as 172.16.254.1 (IPv4), and 2001:db8:0:1234:0:567:8:1 (IPv6).
+          The Internet Assigned Numbers Authority (IANA) manages the IP address space allocations globally and delegates five regional Internet registries (RIRs) to allocate IP address blocks to local Internet registries (Internet service providers) and other entities.",
+         "body" : "An Internet Protocol address (IP address) is a numerical label assigned to each device (e.g., computer, printer) participating in a computer network that uses the Internet Protocol for communication.",
+         "title" : "ip address"
+       }
+      },
+      "add" : {
+         "doc" : {
+           "id" : 141,
+           "author" : "http://www.lynda.com/React-js-tutorials/What-React/379264/413766-4.html",
+           "bibliography" : "React is a JavaScript library thats used for building user interfaces. Its an open source project that started at Facebook and its maintained by developers at Facebook and Instagram and also a huge community of contributors. React is intended to be the view or the user interface, the V in MVC. One of the benefits and goals of the React project is to make developing a large scale single page application or SPA, much easier.
 
-          The following code shows an example of bind in use. It defines a function isInSet that tells us whether a person is in a given set of strings. To call filter in order to collect those person objects whose names are in a specific set, we can either write a function expression that makes a call to isInSet with our set as its first argument or partially apply the isInSet function.
-
-          var theSet = ['Carel Haverbeke', 'Maria van Brussel',
-            'Donald Duck'];
-          function isInSet(set, person) {
-            return set.indexOf(person.name) > -1;
+            Probably the most exciting feature of React though is the virtual DOM. Whenever a change happens the virtual DOM efficiently re-renders the DOM. Well discuss the virtual DOM in more detail in the next video. Finally, JSX is a familiar XML syntax that we can use directly in our JavaScript. React code is easy to understand for developers, designers, and anyone with the knowledge of XML or HTML. All of this is why React is becoming more and more popular and why it's so fun to work with.",
+           "body" : "React (sometimes styled React.js or ReactJS) is an open-source JavaScript library providing a view for data rendered as HTML. React views are typically rendered using components that contain additional components specified as custom HTML tags.",
+           "title" : "React"
+         }
+       },
+       "add" : {
+         "doc" : {
+           "id" : 142,
+           "author" : "http://www.tutorialspoint.com/cprogramming/c_overview.htm",
+           "body" : "C programming language",
+           "bibliography" : "C is a general-purpose, high-level language that was originally developed by Dennis M. Ritchie to develop the UNIX operating system at Bell Labs. C was originally first implemented on the DEC PDP-11 computer in 1972.In 1978, Brian Kernighan and Dennis Ritchie produced the first publicly available description of C, now known as the K&R standard.",
+           "title" : "C"
+         }
+        },
+         "add" : {
+         "doc" : {
+           "id" : 143,
+           "author" : "https://medium.com/tony-freed-consulting/what-is-virtual-dom-c0ec6d6a925c#.30dshax7m",
+          "bibliography" : "Rather than touching the DOM directly, we build an abstract version of it. That’s it. We working with some kind of light weight copy of our DOM.
+          We can change it as we want and then save to our real DOM tree. While saving we should compare, find difference and change (re-render) what should be changed.
+          It is much faster than working directly with DOM, because it doesn’t require all the heavyweight parts that go into a real DOM. It works great, but only if we are working with it in a right way. There are two problems to solve: When re-render the DOM and How to do it efficiently.",
+           "body" : "React creates an in-memory data structure cache, computes the resulting differences, and then updates the browser's displayed DOM efficiently.[10] This allows the programmer to write code as if the entire page is rendered on each change while the React libraries only render subcomponents that actually change.",
+           "title" : "React Dom"
+         }
+       },
+       "add" : {
+         "doc" : {
+           "id" : 144,
+           "author" : "https://www.kirupa.com/react/components.htm",
+           "body" : "React components",
+           "bibliography" : "React components are reusable chunks of JavaScript that output (via JSX) HTML elements. That sounds really pedestrian for something capable of solving great things, but as we start to build components and gradually turn up the complexity, you'll see that components are really powerful and every bit as awesome as I've sold them to you as.",
+           "title" : "Component"
+         }
+        },
+         "add" : {
+         "doc" : {
+           "id" : 145,
+           "author" : "http://www.tutorialspoint.com/cprogramming/c_functions.htm",
+          "bibliography" : "You may encounter situations, when a block of code needs to be executed several number of times. In general, statements are executed sequentially: The first statement in a function is executed first, followed by the second, and so on. Programming languages provide various control structures that allow for more complicated execution paths.A loop statement allows us to execute a statement or group of statements multiple times. Given below is the general form of a loop statement in most of the programming languages ",
+           "body" : "Loops in c programming language",
+           "title" : "C loops"
+         }
+       },
+       "add" : {
+         "doc" : {
+           "id" : 146,
+           "author" : "http://www.tutorialspoint.com/cprogramming/c_functions.htm",
+           "body" : "C language functions",
+           "bibliography" : "A function is a group of statements that together perform a task. Every C program has at least one function, which is main(), and all the most trivial programs can define additional functions.You can divide up your code into separate functions. How you divide up your code among different functions is up to you, but logically the division is such that each function performs a specific task.A function declaration tells the compiler about a function's name, return type, and parameters. A function definition provides the actual body of the function.",
+           "title" : "Functions"
+         }
+        },
+         "add" : {
+           "doc" : {
+             "id" : 147,
+             "author" : "https://www.eskimo.com/~scs/cclass/notes/sx8.html",
+             "bibliography" : "Strings in C are represented by arrays of characters. The end of the string is marked with a special character, the null character, which is simply the character with the value 0. (The null character has no relation except in name to the null pointer. In the ASCII character set, the null character is named NUL.) The null or string-terminating character is represented by another character escape sequence. (We've seen it once already, in the getline function of chapter 6.)",
+             "body" : "Strings in c programming language",
+             "title" : "strings in c language"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 148,
+             "author" : "https://www.quora.com/What-is-Redux-and-who-uses-it",
+             "body" : "React Redux",
+             "bibliography" : "First of all, Redux is hard to initially grasp.  It has that sort of difficulty curve that spikes straight up.  The upside to this, however, is that after that initial spike, you'll find that it drops off linearly.  I never had so many Ah-ha! moments learning a framework as I did with Redux. The strength behind Redux is React.  Given a set of configuring data, React can effortlessly change the visible DOM from one state to another.  Redux builds upon this by being a predictable state container.  That is, it provides reasonable and predictable ways of maintaining your applications state in one place and making tweaks to it.  When you pair this with React, you get an application where you can glance at your data, glance at your views, make one change to your data, and have a reasonable suspicion about how your views will update.",
+             "title" : "Redux"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 149,
+             "author" : "http://www.tutorialspoint.com/cprogramming/c_arrays.htm",
+             "bibliography" : "Arrays a kind of data structure that can store a fixed-size sequential collection of elements of the same type. An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type. Instead of declaring individual variables, such as number0, number1, ..., and number99, you declare one array variable such as numbers and use numbers[0], numbers[1], and ..., numbers[99] to represent individual variables. A specific element in an array is accessed by an index.",
+             "body" : "Arrays in c programming language",
+             "title" : "Arrays in c language"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 150,
+             "author" : "http://fresh2refresh.com/c-programming/",
+             "body" : "c language printf and scanf",
+             "bibliography" : "printf() and scanf() functions are inbuilt library functions in C which are available in the C library by default. These functions are declared and related macros are defined in stdio.h which is a header file. We have to include stdio.h file as shown in below C program to make use of these printf() and scanf() library functions",
+             "title" : "printf"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 151,
+             "author" : "http://fresh2refresh.com/c-programming/",
+             "bibliography" : "C data types are defined as the data storage format that a variable can store a data to perform a specific operation. Data types are used to define a variable before using in a program. Size of variable, const and array are determined by data types. There are four data types in the C language",
+             "body" : "c language data type",
+             "title" : "Data types"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 152,
+             "author" : "http://fresh2refresh.com/c-programming/",
+             "body" : "Tokens and keywords in c language",
+             "bibliography" : "C tokens, Identifiers and Keywords are the basics in a C program. All are explained in this page with definition and simple example programs. C tokens are the basic building blocks in C language which are constructed together to write a C program. Each program element in a C program is given a name called identifiers",
+             "title" : "Tokens"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 153,
+             "author" : "http://fresh2refresh.com/c-programming/",
+             "bibliography" : "C Constants are also like normal variables. But, the only difference is, their values can’t be modified by the program once they are defined. Constants refer to fixed values. They are also called as literals. Constants may be belonging to any of the data type",
+             "body" : "Constants in c language",
+             "title" : "Constants"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 154,
+             "author" : "http://fresh2refresh.com/c-programming/",
+             "body" : "Variables in C language",
+             "bibliography" : "C variable is a named location in a memory where a program can manipulate the data. This location is used to hold the value of the variable. The value of the C variable may get changed in the program. The C variable might be belonging to any of the data types like int, float, char etc",
+             "title" : "Variables"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 155,
+             "author" : "http://clc-wiki.net/wiki/C_language:Terms:Stream",
+             "bibliography" : "A stream that is opened in text mode will read and write files in the implementation's native text file format. The data read from or written to a text stream is in the form of lines of text, each terminated by a single newline character ('\n'). The implementation will take care of conversion from this format into the native format.",
+             "body" : "Text streams in C language",
+             "title" : "Text streams"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 156,
+             "author" : "http://www.informit.com/articles/article.aspx?p=2143394&seqNum=2",
+             "body" : "pogram statements",
+             "bibliography" : "The real work of a C program is done by its statements. C statements display information onscreen, read keyboard input, perform mathematical operations, call functions, read disk files, and all the other operations that a program needs to perform. Most of this book is devoted to teaching you the various C statements. For now, remember that in your source code, C statements are generally written one per line and always end with a semicolon. The statements in bigyear.c are explained briefly in the following sections.",
+             "title" : "statements"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 157,
+             "author" : "http://www.cprogramming.com/tutorial/lesson5.html",
+             "bibliography" : "Switch case statements are a substitute for long if statements that compare a variable to several 'integral' values (integral values are simply values that can be expressed as an integer, such as the value of a char). The basic format for using switch case is outlined below. The value of the variable given into switch is compared to the value following each of the cases, and when one value matches the value of the variable, the computer continues executing the program from that point",
+             "body" : "Switch cases in C language",
+             "title" : "Switch"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 158,
+             "author" : "http://www.cprogramming.com/tutorial/lesson6.html",
+             "body" : "Pointers in C programming language",
+             "bibliography" : "Pointers are an extremely powerful programming tool. They can make some things much easier, help improve your program's efficiency, and even allow you to handle unlimited amounts of data. For example, using pointers is one way to have a function modify a variable passed to it. It is also possible to use pointers to dynamically allocate memory, which means that you can write programs that can handle nearly unlimited amounts of data on the fly--you don't need to know, when you write the program, how much memory you need. Wow, that's kind of cool. Actually, it's very cool, as we'll see in some of the next tutorials. For now, let's just get a basic handle on what pointers are and how you use ",
+             "title" : "Pointers"
+            }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 159,
+             "author" : "http://www.cprogramming.com/tutorial/lesson10.html",
+             "bibliography" : "File I/O is reading from and writing to files. This lesson will only cover text files, that is, files that are composed only of ASCII text. C has two basic classes to handle files, ifstream and ofstream. To use them, include the header file fstream. Ifstream handles file input (reading from files), and ofstream handles file output (writing to files). The way to declare an instance of the ifstream or ofstream class is:",
+             "body" : "File input/output in C language",
+             "title" : "File I O"
+           }
+         },
+         "add" : {
+           "doc" : {
+             "id" : 160,
+             "author" : "http://www.cprogramming.com/tutorial/lesson16.html",
+             "body" : "Recursion in C language",
+             "bibliography" : "Recursion is a programming technique that allows the programmer to express operations in terms of themselves. In C++, this takes the form of a function that calls itself. A useful way to think of recursive functions is to imagine them as a process being performed where one of the instructions is to repeat the process. This makes it sound very similar to a loop because it repeats the same code, and in some ways it is similar to looping. On the other hand, recursion makes it easier to express ideas in which the result of the recursive call is necessary to complete the task. Of course, it must be possible for the process to sometimes be completed without the recursive call. One simple example is the idea of building a wall that is ten feet high; if I want to build a ten foot high wall, then I will first build a 9 foot high wall, and then add an extra foot of bricks. Conceptually, this is like saying the build wall function takes a height and if that height is greater than one, first calls itself to build a lower wall, and then adds one a foot of bricks.",
+             "title" : "Recursion"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 161,
+             "author" : "http://www.cprogramming.com/tutorial/lesson12.html",
+             "body" : "Classes in C programming language",
+             "bibliography" : "One major addition is the object-oriented approach (the other addition is support for generic programming, which we'll cover later). As the name object-oriented programming suggests, this approach deals with objects. Of course, these are not real-life objects themselves. Instead, these objects are the essential definitions of real world objects. Classes are collections of data related to a single object type. Classes not only include information regarding the real world object, but also functions to access the data, and classes possess the ability to inherit from other classes. (Inheritance is covered in a later lesson.)",
+             "title" : "Classes"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 162,
+             "author" : "http://randu.org/tutorials/c/make.php",
+             "body" : "Make and Makefiles in C language",
+             "bibliography" : "Make allows a programmer to easily keep track of a project by maintaining current versions of their programs from separate sources. Make can automate various tasks for you, not only compiling proper branch of source code from the project tree, but helping you automate other tasks, such as cleaning directories, organizing output, and even debugging.",
+             "title" : "Make"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 163,
+             "author" : "https://en.wikibooks.org/wiki/C_Programming/Preprocessor",
+             "body" : "C programming preprocessor",
+             "bibliography" : "Preprocessors are a way of making text processing with your C program before they are actually compiled. Before the actual compilation of every C program it is passed through a Preprocessor. The Preprocessor looks through the program trying to find out specific instructions called Preprocessor directives that it can understand. All Preprocessor directives begin with the # (hash) symbol. C++ compilers use the same C preprocessor.[1]",
+             "title" : "Preprocessor"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 164,
+             "author" : "https://en.wikibooks.org/wiki/C_Programming/Standard_libraries",
+             "body" : "Standard libraries in C",
+             "bibliography" : "The C standard library is a standardized collection of header files and library routines used to implement common operations, such as input/output and character string handling. Unlike other languages (such as COBOL, Fortran, and PL/I) C does not include builtin keywords for these tasks, so nearly all C programs rely on the standard library to function.",
+             "title" : "libraries"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 165,
+             "author" : "https://en.wikibooks.org/wiki/C_Programming/Serialization",
+             "body" : "Serialization in C language",
+             "bibliography" : "It is often necessary to send or receive complex data structures to or from another program that may run on a different architecture or may have been designed for different version of the data structures in question. A typical example is a program that saves its state to a file on exit and then reads it back when started.The send function will typically start by writing a magic identifier and version to the file or network socket and then proceed to write all the data members one by one (i.e. in serial). If variable length arrays are encountered (e.g. strings), it will either write a length followed by the data or it will write the data followed by a special terminator. The format is often XML or binary; in the latter case the htonl() set of macros may come in handy.",
+             "title" : "Serialization"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 166,
+             "author" : "https://en.wikibooks.org/wiki/C_Programming/Control",
+             "body" : "Memory management in C",
+             "bibliography" : "The C function malloc is the means of implementing dynamic memory allocation. It is defined in stdlib.h or malloc.h, depending on what operating system you may be using. Malloc.h contains only the definitions for the memory allocation functions and not the rest of the other functions defined in stdlib.h. Usually you will not need to be so specific in your program, and if both are supported, you should use stdlib.h, since that is ANSI C, and what we will use here.",
+             "title" : "Malloc"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 167,
+             "author" : "https://en.wikibooks.org/wiki/C_Programming/Control",
+             "body" : "Control flow in C programming language",
+             "bibliography" : "Very few programs follow exactly one control path and have each instruction stated explicitly. In order to program effectively, it is necessary to understand how one can alter the steps taken by a program due to user input or other conditions, how some steps can be executed many times with few lines of code, and how programs can appear to demonstrate a rudimentary grasp of logic. C constructs known as conditionals and loops grant this power.",
+             "title" : "Control"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 168,
+             "author" : "http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html",
+             "body" : "UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. ",
+             "bibliography" : "It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.",
+             "title" : "Unix operating system"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 169,
+             "author" : "http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html",
+             "body" : "Types of Unix",
+             "bibliography" : "There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. Here in the School, we use Solaris on our servers and workstations, and Fedora Linux on the servers and desktop PCs.",
+             "title" : "Variants"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 170,
+             "author" : "http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html",
+             "body" : "Unix Kernel",
+             "bibliography" : "The kernel of UNIX is the hub of the operating system: it allocates time and memory to programs and handles the filestore and communications in response to system calls.",
+             "title" : "Kernel"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 171,
+             "author" : "http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html",
+             "body" : "Unix shell interface",
+             "bibliography" : "The shell acts as an interface between the user and the kernel. When a user logs in, the login program checks the username and password, and then starts another program called the shell. The shell is a command line interpreter (CLI). It interprets the commands the user types in and arranges for them to be carried out. The commands are themselves programs: when they terminate, the shell gives the user another prompt (% on our systems)",
+             "title" : "Shell"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 172,
+             "author" : "http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html",
+             "body" : "Directory structure in Unix",
+             "bibliography" : "All the files are grouped together in the directory structure. The file-system is arranged in a hierarchical structure, like an inverted tree. The top of the hierarchy is traditionally called root (written as a slash / )",
+             "title" : "Directories"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 173,
+             "author" : "http://www.tutorialspoint.com/unix/unix-getting-started.htm",
+             "body" : "Commands and Utilities in Unix",
+             "bibliography" : "There are various command and utilities which you would use in your day to day activities. cp, mv, cat and grep etc. are few examples of commands and utilities. There are over 250 standard commands plus numerous others provided through 3rd party software. All the commands come along with various optional options.",
+             "title" : "Commands"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 174,
+             "author" : "http://www.tutorialspoint.com/unix/unix-getting-started.htm",
+             "body" : "Unix System Booting operating",
+             "bibliography" : "If you have a computer which has UNIX operating system installed on it, then you simply need to turn on its power to make it live. As soon as you turn on the power, system starts booting up and finally it prompts you to log into the system, which is an activity to log into the system and use it for your day to day activities.",
+             "title" : "Bootup"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 175,
+             "author" : "http://www.tutorialspoint.com/unix/unix-getting-started.htm",
+             "body" : "Passwords in Unix systems",
+             "bibliography" : "All Unix systems require passwords to help ensure that your files and data remain your own and that the system itself is secure from hackers and crackers. Here are the steps to change your password",
+             "title" : "Password"
+           }
+          },
+           "add" : {
+           "doc" : {
+             "id" : 176,
+             "author" : "http://www.tutorialspoint.com/unix/unix-getting-started.htm",
+             "body" : "Login procedure in Unix",
+             "bibliography" : "Have your userid (user identification) and password ready. Contact your system administrator if you don't have these yet.Type your userid at the login prompt, then press ENTER. Your userid is case-sensitive, so be sure you type it exactly as your system administrator instructed.Type your password at the password prompt, then press ENTER. Your password is also case-sensitive. If you provided correct userid and password then you would be allowed to enter into the system. Read the information and messages that come up on the screen something as below.",
+             "title" : "Login"
+           }
+          },
+        "add" : {
+          "doc" : {
+            "id" : 177,
+            "author" : "http://www.computerhope.com/msdos.htm",
+            "bibliography" : "Short for Microsoft Disk Operating System, MS-DOS is a non-graphical command line operating system created for IBM compatible computers. MS-DOS was first introduced by Microsoft in August 1981 and was last updated in 1994 with MS-DOS 6.22. Although the MS-DOS operating system is rarely used today, the command shell commonly known as the Windows command line is still widely used.",
+            "body" : "Microsoft Disk Operating System",
+            "title" : "MS-DOS"
           }
-
-          console.log(ancestry.filter(function(person) {
-            return isInSet(theSet, person);
-          }));
-          // → [{name: 'Maria van Brussel', …},
-            //    {name: 'Carel Haverbeke', …}]
-          console.log(ancestry.filter(isInSet.bind(null, theSet)));
-          // → … same result
-          The call to bind returns a function that will call isInSet with theSet as first argument, followed by any remaining arguments given to the bound function.
-
-          The first argument, where the example passes null, is used for method calls, similar to the first argument to apply. I’ll describe this in more detail in the next chapter.",
-          "body" : "Binding in Javascript",
-          "title" : "binding"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 23,
-          "author" : "http://eloquentjavascript.net/06_object.html",
-          "bibliography" : "In addition to their set of properties, almost all objects also have a prototype. A prototype is another object that is used as a fallback source of properties. When an object gets a request for a property that it does not have, its prototype will be searched for the property, then the prototype’s prototype, and so on. So who is the prototype of that empty object? It is the great ancestral prototype, the entity behind almost all objects, Object.prototype. As you might expect, the Object.getPrototypeOf function returns the prototype of an object. The prototype relations of JavaScript objects form a tree-shaped structure, and at the root of this structure sits Object.prototype. It provides a few methods that show up in all objects, such as toString, which converts an object to a string representation.",
-          "body" : "Prototype of an object in JavaScript",
-          "title" : "prototype of an object"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 24,
-          "author" : "http://eloquentjavascript.net/06_object.html",
-          "bibliography" : "A more convenient way to create objects that derive from some shared prototype is to use a constructor. In JavaScript, calling a function with the new keyword in front of it causes it to be treated as a constructor. The constructor will have its this variable bound to a fresh object, and unless it explicitly returns another object value, this new object will be returned from the call.
-
-          An object created with new is said to be an instance of its constructor.
-
-          Here is a simple constructor for rabbits. It is a convention to capitalize the names of constructors so that they are easily distinguished from other functions.
-
-          function Rabbit(type) {
-            this.type = type;
+        },
+        "add" : {
+          "doc" : {
+            "id" : 178,
+            "author" : "http://www.computerhope.com/batch.htm",
+            "bibliography" : "Batch files allow MS-DOS and Microsoft Windows users to write a series of commands to run in order upon their execution for automating frequently performed tasks. For example, a batch file could be used to run frequently utilized commands, delete or move a series of files, and other jobs.",
+            "body" : "Windows Batch files",
+            "title" : "Batch"
           }
+        },
+        "add" : {
+          "doc" : {
+            "id" : 179,
+            "author" : "http://www.computerhope.com/ac.htm",
+            "bibliography" : "The autoexec.bat and the config.sys were files created for MS-DOS and Windows 3.x as an easy solution of loading the files required for various devices as well as the operating system to properly run. These files are required for later revisions of MS-DOS and Windows 3.x to load. However, with newer versions of Windows are no longer needed.",
+            "body" : "Autoexec.bat and Config.sys",
+            "title" : "Autoexec"
+          }
+        },
+        "add" : {
+          "doc" : {
+            "id" : 180,
+            "author" : "http://www.computerhope.com/boot.htm",
+            "bibliography" : "A boot disk allows you to boot off of a diskette instead of your hard drive. This diskette can be used to fix issues that may arise during the lifetime of your computer or to help load older MS-DOS games. Keep in mind this diskette is completely different than a restore CD or disc that may have been included with your computer.",
+            "body" : "How to create a boot disk for ms-dos",
+            "title" : "Boot disk"
+          }
+        },
+        "add" : {
+          "doc" : {
+            "id" : 181,
+            "author" : "http://www.computerhope.com/jargon/c/cdrom.htm",
+            "bibliography" : "Short for Compact Disc-Read Only Memory, a CD-ROM (shown right) is an optical disc which contains audio or software data whose memory is read only. A CD-ROM Drive or optical drive is the device used to read them. CD-ROM drives have speeds ranging from 1x all the way up to 72x, meaning it reads the CD roughly 72 times faster than the 1x version. As you would imagine, these drives are capable playing audio CDs and reading data CDs. Below is a picture of the front and back of a standard CD-ROM drive.",
+            "body" : "Compact disc-read only memory",
+            "title" : "CD-ROM"
+          }
+        },
+        "add" : {
+          "doc" : {
+            "id" : 182,
+            "author" : "",
+            "bibliography" : "A Floppy Disk Drive, also called FDD or FD for short, is a computer disk drive that enables a user to save data to removable diskettes. Although 8 disk drives were first made available in 1971, the first real disk drives used were the 5 1/4 floppy disk drives, which were later replaced with the 3 1/2 floppy disk drives.",
+            "body" : "Floppy disk drive",
+            "title" : "FDD"
+          }
+        },
+        "add" : {
+          "doc" : {
+            "id" : 183,
+            "author" : "http://www.computerhope.com/jargon/i/intecomm.htm",
+            "bibliography" : "An internal command is an MS-DOS command that is stored in the system memory and loaded from the command.com or cmd.exe. The illustration shows how commands contained within command.com are part of the command.com file. However, with the external commands, each of the commands are their own separate file.",
+            "body" : "MS-DOS internal command",
+            "title" : "Internal command"
+          }
+        },
 
-          var killerRabbit = new Rabbit('killer');
-          var blackRabbit = new Rabbit('black');
-          console.log(blackRabbit.type);
-          // → black
-          Constructors (in fact, all functions) automatically get a property named prototype, which by default holds a plain, empty object that derives from Object.prototype.",
-          "body" : "constructors of objects",
-          "title" : "constructors"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 25,
-          "author" : "http://eloquentjavascript.net/06_object.html",
-          "bibliography" : "A prototype can be used at any time to add new properties and methods to all objects based on it. For example, it might become necessary for our rabbits to dance.
-
-          Rabbit.prototype.dance = function() {
-            console.log('The ' + this.type + ' rabbit dances a jig.');
-          };
-          killerRabbit.dance();
-          // → The killer rabbit dances a jig.
-          That’s convenient. But there are situations where it causes problems. In previous chapters, we used an object as a way to associate values with names by creating properties for the names and giving them the corresponding value as their value.",
-          "body" : "prototype interference in objects",
-          "title" : "prototype interference"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 26,
-          "author" : "http://eloquentjavascript.net/03_functions.html",
-          "bibliography" : "The ability to treat functions as values, combined with the fact that local variables are 're-created' every time a function is called, brings up an interesting question. What happens to local variables when the function call that created them is no longer active?",
-          "body" : "Closure in Javascript",
-          "title" : "Closure"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 27,
-          "author" : "http://eloquentjavascript.net/09_regexp.html",
-          "bibliography" : "A regular expression is a type of object. It can either be constructed with the RegExp constructor or written as a literal value by enclosing the pattern in forward slash (/) characters. When using the RegExp constructor, the pattern is written as a normal string, so the usual rules apply for backslashes. The second notation, where the pattern appears between slash characters, treats backslashes somewhat differently. First, since a forward slash ends the pattern, we need to put a backslash before any forward slash that we want to be part of the pattern. In addition, backslashes that aren’t part of special character codes (like \n) will be preserved, rather than ignored as they are in strings, and change the meaning of the pattern. Some characters, such as question marks and plus signs, have special meanings in regular expressions and must be preceded by a backslash if they are meant to represent the character itself.",
-          "body" : "Regular Expression",
-          "title" : "Regex"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 28,
-          "author" : "http://eloquentjavascript.net/10_modules.html",
-          "bibliography" : "When looking at a larger program in its entirety, individual functions start to blend into the background. Such a program can be made more readable if we have a larger unit of organization. Modules divide programs into clusters of code that, by some criterion, belong together. This chapter explores some of the benefits that such division provides and shows techniques for building modules in JavaScript.",
-          "body" : "Modules in Javascript",
-          "title" : "Modules"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 29,
-          "author" : "http://eloquentjavascript.net/10_modules.html",
-          "bibliography" : "Most modern programming languages have a scope level between global (everyone can see it) and local (only this function can see it). JavaScript does not. Thus, by default, everything that needs to be visible outside of the scope of a top-level function is visible everywhere. Namespace pollution, the problem of a lot of unrelated code having to share a single set of global variable names, was mentioned in Chapter 4, where the Math object was given as an example of an object that acts like a module by grouping math-related functionality.",
-          "body" : "Namespacing in Javascript",
-          "title" : "Namespacing"
-        }
-      },
-      "add" : {
-        "doc" : {
-          "id" : 30,
-          "author" : "http://eloquentjavascript.net/12_browser.html",
-          "bibliography" : "The World Wide Web (not to be confused with the Internet as a whole) is a set of protocols and formats that allow us to visit web pages in a browser. The 'Web' part in the name refers to the fact that such pages can easily link to each other, thus connecting into a huge mesh that users can move through. To add content to the Web, all you need to do is connect a machine to the Internet, and have it listen on port 80, using the Hypertext Transfer Protocol (HTTP). This protocol allows other computers to request documents over the network.",
-          "body" : "World Wide Web",
-          "title" : "WWW"
-        }
-      },
-    "commit" : { }
-  }
+  "commit" : { }
+}

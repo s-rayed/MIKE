@@ -125,7 +125,7 @@ class RecordPage extends React.Component {
     return (
       <ScrollView style={styles.container}>
           <Text style={styles.instructions }>
-            Touch to record your voice
+            Touch to record
           </Text>
           
           <RecordButton
