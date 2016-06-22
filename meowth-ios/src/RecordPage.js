@@ -55,7 +55,7 @@ class RecordPage extends React.Component {
 
     var transcripts = this.state.transcripts.concat(transcript);
 
-    fetch('http://localhost:3000', {
+    fetch('https://pure-bastion-73183.herokuapp.com/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

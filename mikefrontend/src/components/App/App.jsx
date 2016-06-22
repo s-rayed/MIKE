@@ -112,7 +112,7 @@ class App extends Component {
   _callApi = () => {
     const self = this;
 
-    fetch('http://localhost:3000', {
+    fetch('https://pure-bastion-73183.herokuapp.com/', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
