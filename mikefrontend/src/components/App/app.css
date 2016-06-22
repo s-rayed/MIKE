@@ -1,0 +1,43 @@
+html{
+  background: white
+}
+
+.mike_title {
+  color: white;
+  font-size: 60px;
+  font-family:  sans-serif;
+  text-align: left;
+  margin-top:20px;
+  padding-left:60px;
+  padding-top:20px;
+}
+
+.speech_button{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -150px;
+}
+
+.top_border {
+  background-color:#979797; 
+  height:200px;
+}
+
+.speechButton{
+  cursor: pointer;
+}
+
+#display_speech {
+  text-align: center;
+}
+
+.redirect_button {
+  height:100px;
+  width:100px;
+}
+
+.queries {
+  color:red;
+}
