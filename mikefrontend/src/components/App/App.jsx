@@ -33,26 +33,36 @@ class App extends Component {
     }
 
   }
+  _startOver = (e) => {
+    this.setState({
+      final_transcript: '',
+      interim_transcript: '',
+      recognizing: false,
+      data: null
+    });
+  };
+  render() {
+    return (
+      <div className="mike_title">
+        {!this.state.data ? (
+          <div>
+            <h1>MIKE</h1>
 
-render() {
-  const renderText = this.state.data
-  ? <RenderText data={this.state.data} />
-  : null;
+            <div>
+              { this.state.interim_transcript || this.state.final_transcript }
+            </div>
 
-  return (
-    <div className="mike_title">
-      <h1>MIKE</h1>
-      
-     <div>
-      { this.state.interim_transcript || this.state.final_transcript }
-    </div>
-  
-      <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
-      
-      { renderText }
-    </div>
-  );
-};
+            <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
+          </div>
+          ) : (
+          <div>
+          <a href="#" onClick={this._startOver}>Try again</a>
+            <RenderText data={this.state.data} />
+          </div>
+          )}
+      </div>
+    );
+  };
 
   _onStart = (e) => {
     const { recognizing, recognition } = this.state;
