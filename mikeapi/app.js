@@ -26,9 +26,9 @@ app.use(bodyParser.json());
 
 var result;
 
-//////////////////
-// Controllers //
-////////////////
+///////////////////
+// Controllers ///
+/////////////////
 
 // @get '/'
 app.get('/', function(req, res){
@@ -58,7 +58,8 @@ app.post('/', function(req, res){
   });
 
   var query = solrClient.createQuery();
-  // req.body --> this object --> {question: 'input in html form'} coming from the front end 
+  // req.body --> this object --> {question: 'input in html form'} coming from the front end
+
   query.q(req.body.question);
   solrClient.search(query, function(err, searchResponse) {
     if (err) {
@@ -72,10 +73,9 @@ app.post('/', function(req, res){
     } else {
       console.log('Found ' + searchResponse.response.numFound + ' document(s).');
       result = searchResponse.response.docs;
-      console.log('All documents: ' + result);
+      console.log('All documents: ' + JSON.stringify(result));
     
       res.send({
-        message: new Date(),
         data: result
       });
     }
