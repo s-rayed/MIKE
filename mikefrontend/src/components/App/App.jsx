@@ -47,13 +47,13 @@ class App extends Component {
         {!this.state.data ? (
           <div>
             <div className="top_border">
-            <button className="button1"> Login </button>
-            <button className="button1"> Signup </button>
+            <button className="border_button"> Login </button>
+            <button className="border_button"> Signup </button>
               <h1 className="mike_title">MIKE</h1>
-              <img src="https://www.dropbox.com/s/lk397y9x3uah7k5/withoutbackcrapcrapcrap%20%281%29.png?dl=0" />
+              <img src="https://www.dropbox.com"/>
             </div>
-            <h2 className="waddup"> Man, I Know Everything</h2>
-            <div className="speech_button">
+            <h2 className="tag_line"> Man, I Know Everything</h2>
+              <div className="speech_button">
               <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
             </div>
             <div className="transcript">
