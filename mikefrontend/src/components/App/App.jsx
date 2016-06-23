@@ -43,21 +43,23 @@ class App extends Component {
   };
   render() {
     return (
-      <div className="mike_title">
+      <div>
         {!this.state.data ? (
           <div>
-            <h1>MIKE</h1>
-
+            <div className="top_border">
+              <h1 className="mike_title">MIKE</h1>
+            </div>
+            <div className="speech_button">
+              <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
+            </div>
             <div>
               { this.state.interim_transcript || this.state.final_transcript }
             </div>
-
-            <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
           </div>
           ) : (
-          <div>
-          <a href="#" onClick={this._startOver}>Try again</a>
-            <RenderText data={this.state.data} />
+          <div className="redirect_button">
+            <a href="#" onClick={this._startOver}><img src="http://www.clker.com/cliparts/W/R/D/s/e/v/microphone-md.png"/></a>
+              <RenderText data={this.state.data} />
           </div>
           )}
       </div>

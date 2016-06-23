@@ -1,26 +1,43 @@
 html{
-  background: url("http://fullhdpictures.com/wp-content/uploads/2015/10/Galaxy-Backgrounds.jpeg")
+  background: white
 }
+
 .mike_title {
-  color: orange;
+  color: white;
   font-size: 60px;
   font-family:  sans-serif;
-  text-align: center;
-
+  text-align: left;
+  margin-top:20px;
+  padding-left:60px;
+  padding-top:20px;
 }
 
-#button{
-  border-radius:50%;
-  height: 300px;
-  width: 300px;
-  margin-bottom: 100px;
+.speech_button{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -150px;
 }
 
-#equalizer {
-
+.top_border {
+  background-color:#979797; 
+  height:200px;
 }
+
 .speechButton{
   cursor: pointer;
-  
+}
 
+#display_speech {
+  text-align: center;
+}
+
+.redirect_button {
+  height:100px;
+  width:100px;
+}
+
+.queries {
+  color:red;
 }
