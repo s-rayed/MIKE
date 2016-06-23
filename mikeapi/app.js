@@ -29,6 +29,7 @@ var result;
 ///////////////////
 // Controllers ///
 /////////////////
+app.use(express.static('public'));
 
 // @get '/'
 app.get('/', function(req, res){
