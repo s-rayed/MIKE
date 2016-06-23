@@ -4,8 +4,8 @@ html{
 
 .mike_title {
   color: white;
-  font-size: 60px;
-  font-family: 'Rancho', cursive;
+  font-size: 80px;
+  font-family: 'Patrick Hand', cursive;
   text-align: left;
   margin-top:20px;
   padding-left:60px;
@@ -74,6 +74,7 @@ html{
 
 .border_button {
   background-color: #0088cc;
+  font-family: 'Patrick Hand', cursive;
   float: right;
   margin: 5px;
   border-radius: 5px;
@@ -85,6 +86,8 @@ html{
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin-top:85px;
+  margin-right:10px;
 }
 
 .someRender {
@@ -92,4 +95,52 @@ html{
   font-family: Lucida Sans Unicode;
   font-size: 20px;
   font-style: italic;
+}
+
+.bubble {
+font-size: 30px;
+font-family: 'Patrick Hand', cursive;
+float:right;
+margin-top:80px;
+margin-right:300px;
+position: relative;
+width: 350px;
+height: 145px;
+padding: 4px;
+background: #FFFFFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #0088cc solid 5px;
+}
+
+.bubble:after {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 22px 29px 22px 0;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+left: -29px;
+top: 83px;
+}
+
+.bubble:before {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 26px 33px 26px 0;
+border-color: transparent #0088cc;
+display: block;
+width: 0;
+z-index: 0;
+left: -38px;
+top: 79px;
+}
+
+.bubble_font {
+  font-family: 'Patrick Hand', cursive;
+  padding-left:10px;
 }

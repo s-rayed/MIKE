@@ -56,6 +56,9 @@ class App extends Component {
               <div className="speech_button">
               <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
             </div>
+            <div className="bubble">
+              <p className="bubble_font">CLICK me so I can listen in on the conversation!</p>
+            </div>
             <div className="transcript">
               { this.state.interim_transcript || this.state.final_transcript }
             </div>
