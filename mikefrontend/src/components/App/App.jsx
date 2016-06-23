@@ -48,7 +48,9 @@ class App extends Component {
           <div>
             <div className="top_border">
               <h1 className="mike_title">MIKE</h1>
+              <img src="https://www.dropbox.com/s/lk397y9x3uah7k5/withoutbackcrapcrapcrap%20%281%29.png?dl=0" />
             </div>
+            <h2 className="waddup"> Man, I Know Everything</h2>
             <div className="speech_button">
               <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
             </div>

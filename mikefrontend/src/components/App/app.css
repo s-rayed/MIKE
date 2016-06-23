@@ -10,6 +10,8 @@ html{
   margin-top:20px;
   padding-left:60px;
   padding-top:20px;
+    font-family: Lucida Sans Unicode;
+
 }
 
 .speech_button{
@@ -23,6 +25,8 @@ html{
 .top_border {
   background-color:#979797; 
   height:200px;
+
+
 }
 
 #button{
@@ -34,12 +38,19 @@ html{
 }
 
 .queries {
-  border:1px solid black;
-  margin: 5px 5px 5px 5px;
+  border:10px solid #979797;
+  margin: 10px 250px 10px 250px;
+  line-height: 30px;
+  border-radius: 20px;
+  background-color: white;
+
 }
 
 #redirect_button {
   height:200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .transcript {
@@ -50,4 +61,17 @@ html{
 .query_title{
   text-align:center;
   margin-top:10px;
+  font-family: Lucida Sans Unicode;
+}
+
+.textRender {
+  margin-left: 30px;
+  font-family: Lucida Sans Unicode;
+  font-size: 20px;
+}
+
+.waddup {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  font-size: 80px;
 }
