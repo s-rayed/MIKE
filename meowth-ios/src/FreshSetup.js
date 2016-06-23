@@ -65,7 +65,7 @@ class FreshSetup extends React.Component {
           this.props.navigator.push({
             component: RecordPage,
             backButtonTitle: 'Back',
-            title: 'Meowth',
+            title: 'MIKE',
           });
         }.bind(this)
       });
@@ -80,7 +80,7 @@ class FreshSetup extends React.Component {
 
   render() {
     const actionText = pages[this.props.pageId].next ? 'Next slide' : 'Get Started';
-
+    
     return (
       <View style={styles.container}>
         <Image

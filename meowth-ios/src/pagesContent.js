@@ -2,7 +2,7 @@ let pages = {
   welcome: {
     source: require('image!app-logo'),
     title: 'Welcome to Meowth!',
-    subTitle: 'Man, I Know Everything.',
+    subTitle: 'Man, I Know Everythiddng.',
   },
 //   howItWorks: {
 //     source: require('image!how-it-works'),

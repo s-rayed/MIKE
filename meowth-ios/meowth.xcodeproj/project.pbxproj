@@ -636,6 +636,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yrezgui.meowth2;
 				PRODUCT_NAME = meowth;
 				PROVISIONING_PROFILE = "";
 			};
@@ -655,6 +656,7 @@
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yrezgui.meowth2;
 				PRODUCT_NAME = meowth;
 				PROVISIONING_PROFILE = "";
 			};

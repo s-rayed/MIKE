@@ -31,7 +31,7 @@ class Transcript extends React.Component {
     return (
       ce(View, { onPress, style: styles.view },
         ce(Text, { onPress, style: styles.yes }, item.title),
-     details
+        details
       )
     );
   }
@@ -48,7 +48,7 @@ class Transcript extends React.Component {
 
 var styles = StyleSheet.create({
   view: {
-    marginTop: 10,
+    marginTop: 20,
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 10,
@@ -62,7 +62,9 @@ var styles = StyleSheet.create({
     fontSize: 15,
   },
   yes: {
-    color: '#FFFFFF'
+    // color: '#FFFFFF',
+    color: '#123123',
+    marginTop: 20,
   }
 });
 
