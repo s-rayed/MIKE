@@ -12,8 +12,8 @@ class RenderText extends  Component {
     const rows = this.props.data.map((val, idx) => {
 
       return (
-        <div key={`item-${idx}`}>
-          <h2>{ val.title[0] }</h2>
+        <div className="queries" key={`item-${idx}`}>
+          <h2 className="query_title">{ val.title[0] }</h2>
           <p>{ val.body[0] }</p>
           <p>{ val.bibliography[0] }</p>
           <Linkify>{ val.author[0] }</Linkify>

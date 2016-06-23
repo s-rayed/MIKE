@@ -52,14 +52,17 @@ class App extends Component {
             <div className="speech_button">
               <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
             </div>
-            <div>
+            <div className="transcript">
               { this.state.interim_transcript || this.state.final_transcript }
             </div>
           </div>
           ) : (
-          <div className="redirect_button">
-            <a href="#" onClick={this._startOver}><img src="http://www.clker.com/cliparts/W/R/D/s/e/v/microphone-md.png"/></a>
+          <div>
+            <a href="#" onClick={this._startOver}><img id="redirect_button" src="http://www.clker.com/cliparts/W/R/D/s/e/v/microphone-md.png"/></a>
+
+
               <RenderText data={this.state.data} />
+
           </div>
           )}
       </div>
