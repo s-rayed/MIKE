@@ -47,6 +47,8 @@ class App extends Component {
         {!this.state.data ? (
           <div>
             <div className="top_border">
+            <button className="button1"> Login </button>
+            <button className="button1"> Signup </button>
               <h1 className="mike_title">MIKE</h1>
               <img src="https://www.dropbox.com/s/lk397y9x3uah7k5/withoutbackcrapcrapcrap%20%281%29.png?dl=0" />
             </div>
