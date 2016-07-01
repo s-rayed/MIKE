@@ -28,6 +28,7 @@
     "eslint": "^2.4.0",
     "eslint-plugin-react": "^4.2.3",
     "express": "^4.13.4",
+    "image-webpack-loader": "^1.8.0",
     "morgan": "^1.7.0",
     "node-sass": "^3.4.2",
     "path": "^0.12.7",

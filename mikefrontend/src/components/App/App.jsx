@@ -3,6 +3,7 @@ import styles from './app.css';
 import RenderText from './RenderText.js';
 import SpeechButton from './SpeechButton';
 
+import logo from './images/withoutbackcrapcrapcrap.png';
 
 class App extends Component {
 
@@ -47,21 +48,21 @@ class App extends Component {
         {!this.state.data ? (
           <div>
             <div className="top_border">
+            <img className="logo" src={logo} />
             <button className="border_button"> Login </button>
             <button className="border_button"> Signup </button>
               <h1 className="mike_title">MIKE</h1>
-              <img src="https://www.dropbox.com"/>
             </div>
             <h2 className="tag_line"> Man, I Know Everything</h2>
               <div className="speech_button">
               <SpeechButton onStart={this._onStart} text={this.state.final_transcript}/>
+              <div className="transcript">
+                { this.state.interim_transcript || this.state.final_transcript }
+              </div>
             </div>
-            <div className="bubble">
-              <p className="bubble_font">CLICK me so I can listen in on the conversation!</p>
-            </div>
-            <div className="transcript">
-              { this.state.interim_transcript || this.state.final_transcript }
-            </div>
+
+            <img className="appstore" src="
+            http://static1.squarespace.com/static/56db06fc9f7266f8a1014e34/5718e9ce1d07c0048883b2eb/5718e9f61d07c0048883b456/1461250635270/app-store-badge.png" />
           </div>
           ) : (
           <div>

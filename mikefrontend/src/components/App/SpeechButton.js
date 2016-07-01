@@ -18,6 +18,9 @@ class SpeechButton extends Component {
     return(
       <div onClick = { this._onClick } >
         { recordImage }
+        <div className="bubble">
+          <p className="bubble_font">CLICK me so I can listen in on the conversation!</p>
+        </div>
       </div>
     )
   };

@@ -1,0 +1,239 @@
+{
+  "add" : {
+    "doc" : {
+      "id" : 1,
+      "author" : "http://eloquentjavascript.net/03_functions.html",
+      "bibliography" : "Alongside HTML and CSS, it is one of the three core technologies of World Wide Web content production; the majority of websites employ it and it is supported by all modern Web browsers without plug-ins.[6] JavaScript is prototype-based with first-class functions, making it a multi-paradigm language, supporting object-oriented, imperative, and functional programming styles.",
+      "body" : "JavaScript is a high-level, dynamic, untyped, and interpreted programming language. It has been standardized in the ECMAScript language specification.",
+      "title" : "Javascript"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 2,
+      "author" : "http://eloquentjavascript.net/03_functions.html",
+      "bibliography" : "The parameters to a function behave like regular variables, but their initial values are given by the caller of the function, not the code in the function itself.
+
+      An important property of functions is that the variables created inside of them, including their parameters, are local to the function. This means, for example, that the result variable in the power example will be newly created every time the function is called, and these separate incarnations do not interfere with each other.
+
+      This 'localness' of variables applies only to the parameters and to variables declared with the var keyword inside the function body. Variables declared outside of any function are called global, because they are visible throughout the program. It is possible to access such variables from inside a function, as long as you haven’t declared a local variable with the same name.",
+      "body" : "Parameters in Javascript",
+      "title" : "Parameters"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 3,
+      "author" : "http://eloquentjavascript.net/03_functions.html",
+      "bibliography" : "A function definition is just a regular variable definition where the value given to the variable happens to be a function. For example, the following code defines the variable square to refer to a function that produces the square of a given number:
+
+      var square = function(x) {
+        return x * x;
+      };
+
+      console.log(square(12));
+      // → 144
+      A function is created by an expression that starts with the keyword function. Functions have a set of parameters (in this case, only x) and a body, which contains the statements that are to be executed when the function is called. The function body must always be wrapped in braces, even when it consists of only a single statement (as in the previous example).
+
+      A function can have multiple parameters or no parameters at all. In the following example, makeNoise does not list any parameter names, whereas power lists two:
+
+      var makeNoise = function() {
+        console.log('Pling!');
+      };
+
+      makeNoise();
+      // → Pling!
+
+      var power = function(base, exponent) {
+        var result = 1;
+        for (var count = 0; count < exponent; count++)
+        result *= base;
+        return result;
+      };
+
+      console.log(power(2, 10));
+      // → 1024",
+      "body" : "Functions in Javascript",
+      "title" : "Functions"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 4,
+      "author" : "Google",
+      "bibliography" : "It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called recursive. Recursion allows some functions to be written in a different style. This is rather close to the way mathematicians define exponentiation and arguably describes the concept in a more elegant way than the looping variant does. The function calls itself multiple times with different arguments to achieve the repeated multiplication. But this implementation has one important problem: in typical JavaScript implementations, it’s about 10 times slower than the looping version. Running through a simple loop is a lot cheaper than calling a function multiple times.",
+      "body" : "Recursion in Javascript",
+      "title" : "Recursion"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 5,
+      "author" : "http://eloquentjavascript.net/04_data.html",
+      "bibliography" : "Numbers, Booleans, and strings are the bricks that data structures are built from. But you can’t make much of a house out of a single brick. Objects allow us to group values—including other objects—together and thus build more complex structures. The programs we have built so far have been seriously hampered by the fact that they were operating only on simple data types. This chapter will add a basic understanding of data structures to your toolkit. By the end of it, you’ll know enough to start writing some useful programs.",
+      "body" : "Data Structures in Javascript",
+      "title" : "Data Structures"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 6,
+      "author" : "http://eloquentjavascript.net/04_data.html",
+      "bibliography" : "To work with a chunk of digital data, we’ll first have to find a way to represent it in our machine’s memory. Say, as a simple example, that we want to represent a collection of numbers: 2, 3, 5, 7, and 11. We could get creative with strings—after all, strings can be any length, so we can put a lot of data into them—and use '2 3 5 7 11' as our representation. But this is awkward. You’d have to somehow extract the digits and convert them back to numbers to access them. Fortunately, JavaScript provides a data type specifically for storing sequences of values. It is called an array and is written as a list of values between square brackets, separated by commas.",
+      "body" : "Datasets in Javascript",
+      "title" : "Datasets"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 7,
+      "author" : "http://eloquentjavascript.net/04_data.html",
+      "bibliography" : "A set of daily log entries can be represented as an array. But the entries do not consist of just a number or a string—each entry needs to store a list of activities and a Boolean value that indicates whether Jacques turned into a squirrel. Ideally, we would like to group these values together into a single value and then put these grouped values into an array of log entries. Values of the type object are arbitrary collections of properties, and we can add or remove these properties as we please. One way to create an object is by using a curly brace notation. Inside the curly braces, we can give a list of properties separated by commas. Each property is written as a name, followed by a colon, followed by an expression that provides a value for the property. Spaces and line breaks are not significant. When an object spans multiple lines, indenting it like in the previous example improves readability. Properties whose names are not valid variable names or valid numbers have to be quoted.",
+      "body" : "Objects in Javascript",
+      "title" : "Objects"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 8,
+      "author" : "http://eloquentjavascript.net/04_data.html",
+      "bibliography" : "Numbers, strings, and Booleans, are all immutable—it is impossible to change an existing value of those types. You can combine them and derive new values from them, but when you take a specific string value, that value will always remain the same. The text inside it cannot be changed. If you have reference to a string that contains 'cat', it is not possible for other code to change a character in that string to make it spell 'rat'. With objects, on the other hand, the content of a value can be modified by changing its properties. When we have two numbers, 120 and 120, we can consider them precisely the same number, whether or not they refer to the same physical bits. But with objects, there is a difference between having two references to the same object and having two different objects that contain the same properties. ",
+      "body" : "Mutability in Javascript",
+      "title" : "Mutability"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 9,
+      "author" : "http://eloquentjavascript.net/05_higher_order.html",
+      "bibliography" : "Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions. If you have already accepted the fact that functions are regular values, there is nothing particularly remarkable about the fact that such functions exist. The term comes from mathematics, where the distinction between functions and other values is taken more seriously.
+      function greaterThan(n) {
+        return function(m) { return m > n; };
+      }
+      var greaterThan10 = greaterThan(10);
+      console.log(greaterThan10(11));
+      // → true
+
+      Higher-order functions allow us to abstract over actions, not just values. They come in several forms. For example, you can have functions that create new functions. And you can have functions that change other functions.",
+      "body" : "Higher order functions in Javascript",
+      "title" : "Higher order functions"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 10,
+      "author" : "Google",
+      "bibliography" : "It is widely used as a data storage and communication format on the Web. JSON is similar to JavaScript’s way of writing arrays and objects, with a few restrictions. All property names have to be surrounded by double quotes, and only simple data expressions are allowed—no function calls, variables, or anything that involves actual computation. Comments are not allowed in JSON. JavaScript gives us functions, JSON.stringify and JSON.parse, that convert data from and to this format. The first takes a JavaScript value and returns a JSON-encoded string. The second takes such a string and converts it to the value it encodes.",
+      "body" : "Pronounced 'Jason' stands for JavaScript Object Notation",
+      "title" : "JSON"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 11,
+      "author" : "Google",
+      "bibliography" : "Ruby utilizes OOP to model programming problems in a real world way",
+      "body" : "Object Oriented Programming",
+      "title" : "OOP"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 12,
+      "author" : "Google",
+      "bibliography" : "Ruby comes with many out of the box methods, and also gives you the ability to define custom methods.",
+      "body" : "Method",
+      "title" : "Methods"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 13,
+      "author" : "Google",
+      "bibliography" : "Classes and class inheritance are important concepts in Ruby. They allow you to create objects with similar characteristics without having to create each on from scratch.",
+      "body" : "Class",
+      "title" : "Classes"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 14,
+      "author" : "Google",
+      "bibliography" : "Hashes and arrays are the core data structures in Ruby. You can use them in different ways to store any kind of data you would like.",
+      "body" : "Data Structures",
+      "title" : "DS"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 15,
+      "author" : "Google",
+      "bibliography" : "In Ruby, hashes use a key and value pair structure to store data. Generally keys are symbols and the value can be any Ruby object.",
+      "body" : "Hashes",
+      "title" : "Hash"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 16,
+      "author" : "Google",
+      "bibliography" : "In Ruby, an array is an ordered list of data that is indexed at 0.",
+      "body" : "Arrays",
+      "title" : "Array"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 17,
+      "author" : "Google",
+      "bibliography" : "You can use loop methods to iterate over sets of data to alter or organize the data contained.",
+      "body" : "Loop",
+      "title" : "Loops"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 18,
+      "author" : "Google",
+      "bibliography" : "In Ruby, you can declare a variable by naming it and putting the value after an equlas sign",
+      "body" : "Variable",
+      "title" : "Variables"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 19,
+      "author" : "Google",
+      "bibliography" : "Ruby, like many other languages have many tools for debugging. The most common are pry and byebug",
+      "body" : "Debugging",
+      "title" : "DB"
+    }
+  },
+  "add" : {
+    "doc" : {
+      "id" : 20,
+      "author" : "Google",
+      "bibliography" : "Modules can be used to store constants and methods that don't fit into your classes in Ruby and can be easily included in your programs.",
+      "body" : "Module",
+      "title" : "Modules"
+    },
+      "add": {
+        "doc" : {
+          "id" : 21,
+          "author" : "Google",
+          "bibliography" : "",
+          "body" : "I forgot my username",
+          "title" : ""
+        }
+      },
+      "add" : {
+        "doc" : {
+          "id" : 22,
+          "author" : "Google",
+          "bibliography" : "",
+          "body" : "I think I've been hacked",
+          "title" : ""
+        }
+      },
+      "commit" : { }
+    }

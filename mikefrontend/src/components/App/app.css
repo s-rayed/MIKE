@@ -8,7 +8,7 @@ html{
   font-family: 'Patrick Hand', cursive;
   text-align: left;
   margin-top:20px;
-  padding-left:60px;
+  padding-left: 180px;
   padding-top:20px;
 }
 
@@ -50,8 +50,12 @@ html{
 }
 
 .transcript {
-  color:red;
-  margin-top:300px;
+  color: black;
+  margin-bottom:300px;
+  font-size: 30px;
+  font-family: Lucida Sans Unicode;
+  justify-content: center;
+  margin-left: 30px;
 }
 
 .query_title{
@@ -98,20 +102,21 @@ html{
 }
 
 .bubble {
-font-size: 30px;
-font-family: 'Patrick Hand', cursive;
-float:right;
-margin-top:80px;
-margin-right:300px;
-position: relative;
-width: 350px;
-height: 145px;
-padding: 4px;
-background: #FFFFFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-border: #0088cc solid 5px;
+  font-size: 30px;
+  font-family: 'Patrick Hand', cursive;
+  position: relative;
+  display: inline-block;
+  width: 350px;
+  height: 145px;
+  padding: 4px;
+  background: #FFFFFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: #0088cc solid 5px;
+  bottom: 175px;
+  left: 74px;
+  
 }
 
 .bubble:after {
@@ -143,4 +148,23 @@ top: 79px;
 .bubble_font {
   font-family: 'Patrick Hand', cursive;
   padding-left:10px;
+}
+
+.appstore {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-height: 400px;
+  max-width: 400px;
+}
+
+.logo {
+  max-height: 150px;
+  max-width: 150px;
+  padding-top: 8px;
+  position: absolute;
+}
+
+.textInput {
+  font-size: 30px ;
 }
